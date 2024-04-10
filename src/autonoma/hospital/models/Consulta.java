@@ -11,12 +11,31 @@ import java.util.Date;
 public class Consulta
 {
     //////////Atributos//////////
+    /**
+     * Paciente de la consulta
+     */
     private Paciente paciente;
+    /**
+     * Medico de la consulta
+     */
     private TrabajadorSalud medico;
+    /**
+     * Fecha de la consulta
+     */
     private Date fecha;
+    /**
+     * Valor de la consulta
+     */
     private Integer costoCita;
 
     //////////Constructor//////////
+    /**
+     * Inicializa valores de las variables 
+     * @param paciente de la consulta
+     * @param medico de la consulta
+     * @param fecha de la consulta
+     * @param costoCita de la consulta
+     */
     public Consulta(Paciente paciente, TrabajadorSalud medico, Date fecha, Integer costoCita)
     {
         this.paciente = paciente;
