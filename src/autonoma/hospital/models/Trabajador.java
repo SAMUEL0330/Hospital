@@ -22,7 +22,7 @@ public abstract class Trabajador
     /**
      * Salario base del trabajador
      */
-    private String salarioBase;
+    private Integer salarioBase;
     
     //////////////Constructor////////////////////////
     /**
@@ -33,7 +33,7 @@ public abstract class Trabajador
      * @param salarioBase del trabajador
      */
    
-    public Trabajador(String nombre, String numeroDeIdentificacion, String edad, String salarioBase)
+    public Trabajador(String nombre, String numeroDeIdentificacion, String edad, Integer salarioBase)
     {
         this.nombre = nombre;
         this.numeroDeIdentificacion = numeroDeIdentificacion;
@@ -73,12 +73,12 @@ public abstract class Trabajador
         this.edad = edad;
     }
 
-    public String getSalarioBase()
+    public Integer getSalarioBase()
     {
         return salarioBase;
     }
 
-    public void setSalarioBase(String salarioBase)
+    public void setSalarioBase(Integer salarioBase)
     {
         this.salarioBase = salarioBase;
     }
