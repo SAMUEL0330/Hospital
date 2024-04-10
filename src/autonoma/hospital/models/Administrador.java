@@ -8,14 +8,31 @@ package autonoma.hospital.models;
 public class Administrador
 {
   ////////////Atributos//////////
-    
+   /**
+    * Nombre del gerente 
+    */ 
    private String nombre;
+   /**
+    * ID del gerente
+    */
    private String numeroIdentificacion;
+   /**
+    * edad del gerente
+    */
    private Integer edad;
+   /**
+    * profesion del gerente
+    */
    private String carrera;
    
    //////////////Constructor/////////////////////////
-
+    /**
+     * Inicializa valores de las variables 
+     * @param nombre del gerente
+     * @param numeroIdentificacion del gerente 
+     * @param edad del gerente
+     * @param carrera o profesion del gerente
+     */
     public Administrador(String nombre, String numeroIdentificacion, Integer edad, String carrera)
     {
         this.nombre = nombre;
