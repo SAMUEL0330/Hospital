@@ -7,7 +7,7 @@ package autonoma.hospital.models;
  */
 public class TrabajadorOperativo extends Trabajador
 {
- ///////////////Arributos///////////////////////////////
+ ///////////////Atributos///////////////////////////////
     /**
      * Area de trabajo del empleado
      */
@@ -19,22 +19,27 @@ public class TrabajadorOperativo extends Trabajador
      * Inicializa valores de las variables 
      * @param areaTrabajo del empleado
      */
-    public TrabajadorOperativo(String areaTrabajo) {
+    public TrabajadorOperativo(String areaTrabajo, String nombre, String numeroDeIdentificacion, String edad, Integer salarioBase)
+    {
+        super(nombre, numeroDeIdentificacion, edad, salarioBase);
         this.areaTrabajo = areaTrabajo;
     }
     
     //////////////////Metodos De Acceso/////////////////////
-
-    public String getAreaTrabajo() {
+    public String getAreaTrabajo()
+    {
         return areaTrabajo;
     }
 
-    public void setAreaTrabajo(String areaTrabajo) {
+    public void setAreaTrabajo(String areaTrabajo)
+    {
         this.areaTrabajo = areaTrabajo;
     }
 
+    ///////////Métodos////////////
     @Override
-    public void calcularSalario() {
+    public void calcularSalario()
+    {
        
     }
     

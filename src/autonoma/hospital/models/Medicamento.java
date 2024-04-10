@@ -2,8 +2,8 @@ package autonoma.hospital.models;
 /**
  * Representa un medicamento en el inventario de la farmacia.
  * @author Samuel Esteban Herrera Bedoya & Alejandra Zapata Castañeda
- * @version 0.1.5
- * @since 2024-04-8
+ * @version 1.0.0
+ * @since 2024-04-9
  */
 public abstract class Medicamento
 {
