@@ -5,7 +5,7 @@ import java.util.Date;
 /**
  * Representa al hospital en su conjunto.
  * @author Samuel Esteban Herrera Bedoya & Alejandra Zapata Castañeda
- * @version 0.0.1
+ * @version 0.1.1
  * @since 2024-04-8
  */
 public class Hospital
