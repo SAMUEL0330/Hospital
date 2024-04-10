@@ -22,24 +22,29 @@ package autonoma.hospital.models;
     
     ///////////////Metodos De Acceso////////////////////
 
-    public String getEspecialidad() {
+    public String getEspecialidad()
+    {
         return especialidad;
     }
 
-    public void setEspecialidad(String especialidad) {
+    public void setEspecialidad(String especialidad)
+    {
         this.especialidad = especialidad;
     }
 
-    public Integer getNumeroHorasTrabajadas() {
+    public Integer getNumeroHorasTrabajadas()
+    {
         return numeroHorasTrabajadas;
     }
 
-    public void setNumeroHorasTrabajadas(Integer numeroHorasTrabajadas) {
+    public void setNumeroHorasTrabajadas(Integer numeroHorasTrabajadas)
+    {
         this.numeroHorasTrabajadas = numeroHorasTrabajadas;
     }
 
     @Override
-    public void calcularSalario() {
+    public void calcularSalario()
+    {
     
     }
  }

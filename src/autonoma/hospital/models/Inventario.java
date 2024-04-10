@@ -1,4 +1,7 @@
 package autonoma.hospital.models;
+
+import java.util.Date;
+
 /**
  * Contenedor de los medicamentos
  * @author Samuel Esteban Herrera Bedoya & Alejandra Zapata Castañeda
@@ -7,5 +10,7 @@ package autonoma.hospital.models;
  */
 public class Inventario
 {
-    
+    ////////Atributos/////////
+    private Integer codigo;
+    private Date anoActualizacion;
 }

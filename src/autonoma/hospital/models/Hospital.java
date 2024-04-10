@@ -71,4 +71,84 @@ public class Hospital
         this.estado = estado;
         this.localizacion = localizacion;
     }
+
+    public String getNombre()
+    {
+        return nombre;
+    }
+
+    public void setNombre(String nombre)
+    {
+        this.nombre = nombre;
+    }
+
+    public String getDireccion()
+    {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion)
+    {
+        this.direccion = direccion;
+    }
+
+    public String getTelefono()
+    {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono)
+    {
+        this.telefono = telefono;
+    }
+
+    public Integer getPresupuesto()
+    {
+        return presupuesto;
+    }
+
+    public void setPresupuesto(Integer presupuesto)
+    {
+        this.presupuesto = presupuesto;
+    }
+
+    public Integer getMetaAnualVenta()
+    {
+        return metaAnualVenta;
+    }
+
+    public void setMetaAnualVenta(Integer metaAnualVenta)
+    {
+        this.metaAnualVenta = metaAnualVenta;
+    }
+
+    public Date getFechaFundacion()
+    {
+        return fechaFundacion;
+    }
+
+    public void setFechaFundacion(Date fechaFundacion)
+    {
+        this.fechaFundacion = fechaFundacion;
+    }
+
+    public Boolean getEstado()
+    {
+        return estado;
+    }
+
+    public void setEstado(Boolean estado)
+    {
+        this.estado = estado;
+    }
+
+    public Coordenada getLocalizacion()
+    {
+        return localizacion;
+    }
+
+    public void setLocalizacion(Coordenada localizacion)
+    {
+        this.localizacion = localizacion;
+    }
 }

@@ -50,7 +50,4 @@ public class Padecimiento
     {
         this.descripcion = descripcion;
     }
-    
-    
-   
 }
