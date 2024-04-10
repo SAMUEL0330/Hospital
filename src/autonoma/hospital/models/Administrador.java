@@ -7,7 +7,7 @@ package autonoma.hospital.models;
  */
 public class Administrador
 {
-  ////////////Atributos
+  ////////////Atributos//////////
     
    private String nombre;
    private String numeroIdentificacion;
