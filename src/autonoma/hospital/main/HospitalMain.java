@@ -1,7 +1,6 @@
 package autonoma.hospital.main;
 
 import javax.swing.JOptionPane;
-import autonoma.hospital.models.GeneradorReportes;
 import static autonoma.hospital.models.GeneradorReportes.escribirEnArchivo;
 /**
  *
