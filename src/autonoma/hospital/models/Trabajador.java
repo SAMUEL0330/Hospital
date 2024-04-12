@@ -24,7 +24,7 @@ public abstract class Trabajador
      */
     private Integer salarioBase;
     
-    //////////////Constructor////////////////////////
+    //////////////Constructor////////////////////
     /**
      * Inicializa valores de las variables 
      * @param nombre del trabajador
@@ -40,7 +40,7 @@ public abstract class Trabajador
         this.salarioBase = salarioBase;
     }
     
-   ///////////////Metodos De Acceso/////////////////////////// 
+    //////////////Metodos De Acceso////////////////
     public String getNombre()
     {
         return nombre;

@@ -1,6 +1,9 @@
 package autonoma.hospital.models;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Date;
+import java.util.Scanner;
 
 /**
  * Representa al hospital en su conjunto.
@@ -34,7 +37,7 @@ public class Hospital
     /**
      * Meta anual venta del hospital
      */
-    private Date fechaFundacion;
+    private Integer fechaFundacion;
     /**
      * Fecha de fundacion del hospital
      */
@@ -47,7 +50,7 @@ public class Hospital
      * Localizacion del hospital
      */
     
-    //////Constructor/////////////////
+    //////Constructor////////////////
     /**
      * Inicializa valores de las variables 
      * @param nombre del hospital
@@ -59,13 +62,12 @@ public class Hospital
      * @param estado del hospital
      * @param localizacion del hospital
      */
-    public Hospital(String nombre, String direccion, String telefono, Integer presupuesto, Integer metaAnualVenta, Date fechaFundacion, Boolean estado, Coordenada localizacion)
+    public Hospital(String nombre, String direccion, String telefono, Integer presupuesto, Integer fechaFundacion, Boolean estado, Coordenada localizacion)
     {
         this.nombre = nombre;
         this.direccion = direccion;
         this.telefono = telefono;
         this.presupuesto = presupuesto;
-        this.metaAnualVenta = metaAnualVenta;
         this.fechaFundacion = fechaFundacion;
         this.estado = estado;
         this.localizacion = localizacion;
@@ -111,22 +113,12 @@ public class Hospital
         this.presupuesto = presupuesto;
     }
 
-    public Integer getMetaAnualVenta()
-    {
-        return metaAnualVenta;
-    }
-
-    public void setMetaAnualVenta(Integer metaAnualVenta)
-    {
-        this.metaAnualVenta = metaAnualVenta;
-    }
-
-    public Date getFechaFundacion()
+    public Integer getFechaFundacion()
     {
         return fechaFundacion;
     }
 
-    public void setFechaFundacion(Date fechaFundacion)
+    public void setFechaFundacion(Integer fechaFundacion)
     {
         this.fechaFundacion = fechaFundacion;
     }
@@ -164,5 +156,49 @@ public class Hospital
     public void registrarPatrocinio()
     {
         
+    }
+    
+    public static Hospital creaGerenteDeDocumento()
+    {
+        File fichero = new File("C:\\Users\\User\\OneDrive\\Documentos\\NetBeansProjects\\SimuladorCarro\\src\\autonoma\\simuladorcarro\\files\\TallerActualizar.txt");
+        Scanner s = null;
+        int contador =1;
+        Coordenada localizacion = new Coordenada(-121.94667417922749, 37.25157313140872);
+        Hospital h= new Hospital(" ", " ", " ", 0, 0, true, localizacion);
+        
+        try 
+        {
+            s = new Scanner(fichero);
+            while (s.hasNextLine())
+            {
+                Scanner lineaScanner = new Scanner(s.nextLine());
+                lineaScanner.skip("\\w+\\s");
+                String palabra = lineaScanner.next();
+                if(contador == 1)
+                {
+                    h.setNombre(palabra);
+                }else{
+                    //m.setCilindraje(palabra);
+                }
+                System.out.println(palabra);
+                lineaScanner.close();
+                contador++;
+            }
+            h= new Hospital("nombre", "direccion", "telefono", 0, 0, true, localizacion);
+            /*c.setTipoMotor(m);
+            c.setTipoLlanta(l);*/
+            return h;  
+        } catch (FileNotFoundException ex) {
+                System.out.println("Mensaje: " + ex.getMessage());
+        } finally {
+                try 
+                {
+                    if (s != null)
+                        s.close();
+                } catch (Exception ex2) {
+                        System.out.println("Mensaje 2: " + ex2.getMessage());
+                }
+        }
+    return null;
     }
 }

@@ -52,9 +52,9 @@ public class Reporte
         try
         {
             FileWriter escritor = new FileWriter(fichero, true); // true para que agregue al final del archivo
-            PrintWriter imprimidor = new PrintWriter(escritor);
-            imprimidor.println(datos[0] + " " + datos[1] + " " + datos[2]);
-            imprimidor.close();
+            PrintWriter impresor = new PrintWriter(escritor);
+            impresor.println(datos[0] + " " + datos[1] + " " + datos[2]);
+            impresor.close();
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "Error al escribir en el archivo.");
             e.printStackTrace();

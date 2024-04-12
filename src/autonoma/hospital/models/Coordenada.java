@@ -9,24 +9,23 @@ public class Coordenada
 {
     ///////Atributos///////
     /**
-     * Longitud de la coordenada
-     */
-    private double longitud;
-    /**
      * Latitud de la coordena
      */
     private double latitud;
-    
+    /**
+     * Longitud de la coordenada
+     */
+    private double longitud;
     ///////Constructor///////
     /**
      * Inicializa el valor de las variables
      * @param longitud de la coordenada
      * @param latitud de la coordenada
      */
-    public Coordenada(double longitud, double latitud)
+    public Coordenada(double latitud, double longitud)
     {
-        this.longitud = longitud;
         this.latitud = latitud;
+        this.longitud = longitud;
     }
     
     ///////Métodos de acceso///////
