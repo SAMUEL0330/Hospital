@@ -40,10 +40,11 @@ public class MedicamentoMarca extends Medicamento
     }
     ////////Métodos///////
     /**
-     * 
+     * Calcula el precio de venta de los medicamentos de marca popular
+     * @param precioVenta del medicamento popular
      */
     @Override
-    public void calcularPrecioVenta()
+    public void calcularPrecioVenta(String precioVenta)
     {
         
     }   

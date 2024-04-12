@@ -7,21 +7,34 @@ package autonoma.hospital.models;
  */
  public class TrabajadorSalud extends Trabajador
 {
-  ////////////////Atributos/////////////////////////////  
-    
+    ////////////Atributos///////////////
+    /**
+     * Reflejo del mejor desempeño del trabajador de la salud
+     */
     private String especialidad;
+    /**
+     * Cantidad de horas trabajadas en la jornada
+     */
     private Integer numeroHorasTrabajadas;
     
-    //////////////Constructor///////////////////////////
-
-    public TrabajadorSalud(String especialidad, Integer numeroHorasTrabajadas, String nombre, String numeroDeIdentificacion, String edad, Integer salarioBase) {
+    //////////Constructor/////////////
+    /**
+     * Inicializa el valor de las variables
+     * @param especialidad del trabajador de la salud
+     * @param numeroHorasTrabajadas por el trabajador de la salud en la jornada
+     * @param nombre del trabajador de la salud
+     * @param numeroDeIdentificacion del trabajador de la salud
+     * @param edad del trabajador de la salud
+     * @param salarioBase del trabajador de la salud
+     */
+    public TrabajadorSalud(String especialidad, Integer numeroHorasTrabajadas, String nombre, String numeroDeIdentificacion, String edad, Integer salarioBase)
+    {
         super(nombre, numeroDeIdentificacion, edad, salarioBase);
         this.especialidad = especialidad;
         this.numeroHorasTrabajadas = numeroHorasTrabajadas;
     }
     
     ///////////////Metodos De Acceso////////////////////
-
     public String getEspecialidad()
     {
         return especialidad;
@@ -42,6 +55,10 @@ package autonoma.hospital.models;
         this.numeroHorasTrabajadas = numeroHorasTrabajadas;
     }
 
+    /**
+     * Método heredado para calcular el salario de un trabajador de la salud
+     * @param salarioBase de del trabajador de la salud
+     */
     @Override
     public void calcularSalario(Integer salarioBase)
     {

@@ -30,7 +30,6 @@ public class Padecimiento
     }
    
     ///////////////////Metodos De Acceso///////////////////
-
     public String getNombre() 
     {
         return nombre;

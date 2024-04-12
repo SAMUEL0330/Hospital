@@ -48,7 +48,6 @@ public class Hospital
      */
     
     //////Constructor/////////////////
-    
     /**
      * Inicializa valores de las variables 
      * @param nombre del hospital
@@ -150,5 +149,20 @@ public class Hospital
     public void setLocalizacion(Coordenada localizacion)
     {
         this.localizacion = localizacion;
+    }
+    
+    public Integer calcularPresupuestoRestante()
+    {
+        return presupuesto;
+    }
+    
+    public Boolean cambiarEstado(Boolean estado)
+    {
+        return false;
+    }
+    
+    public void registrarPatrocinio()
+    {
+        
     }
 }

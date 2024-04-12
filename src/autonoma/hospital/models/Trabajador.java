@@ -14,7 +14,7 @@ public abstract class Trabajador
     /**
      * Id del trabajador 
      */
-    private String numeroDeIdentificacion;
+    private String numeroDocumento;
     /**
      * Edad del trabajador
      */
@@ -28,21 +28,19 @@ public abstract class Trabajador
     /**
      * Inicializa valores de las variables 
      * @param nombre del trabajador
-     * @param numeroDeIdentificacion del trabajador
+     * @param numeroDocumento del trabajador
      * @param edad del trabajador
      * @param salarioBase del trabajador
      */
-   
-    public Trabajador(String nombre, String numeroDeIdentificacion, String edad, Integer salarioBase)
+    public Trabajador(String nombre, String numeroDocumento, String edad, Integer salarioBase)
     {
         this.nombre = nombre;
-        this.numeroDeIdentificacion = numeroDeIdentificacion;
+        this.numeroDocumento = numeroDocumento;
         this.edad = edad;
         this.salarioBase = salarioBase;
     }
     
    ///////////////Metodos De Acceso/////////////////////////// 
-
     public String getNombre()
     {
         return nombre;
@@ -53,14 +51,14 @@ public abstract class Trabajador
         this.nombre = nombre;
     }
 
-    public String getNumeroDeIdentificacion()
+    public String getNumeroDocumento()
     {
-        return numeroDeIdentificacion;
+        return numeroDocumento;
     }
 
-    public void setNumeroDeIdentificacion(String numeroDeIdentificacion)
+    public void setNumeroDocumento(String numeroDocumento)
     {
-        this.numeroDeIdentificacion = numeroDeIdentificacion;
+        this.numeroDocumento = numeroDocumento;
     }
 
     public String getEdad()
@@ -85,6 +83,7 @@ public abstract class Trabajador
     ////////Métodos////////
     /**
      * Método del que heredan el cual permitirá calcular el salario del empleado
+     * @param salarioBase 
      */
     public abstract void calcularSalario(Integer salarioBase);
 }

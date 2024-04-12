@@ -12,29 +12,46 @@ import java.util.Date;
 public class Paciente
 {
     ////////Atributos///////////
+    /**
+     * Nombre del paciente
+     */
     private String nombre;
+    /**
+     * Número de Identificación del paciente
+     */
     private String numeroDocumento;
+    /**
+     * El número de teléfono del paciente
+     */
     private String telefono;
+    /**
+     * La edad del paciente
+     */
     private Integer edad;
+    /**
+     * El correo del paciente
+     */
     private String correo;
-    private ArrayList<Padecimiento> padecimiento;
+    /**
+     * Lista de enfermedades del paciente
+     */
+    private ArrayList<Padecimiento> enfermedades;
     private Date fechaFundacion;
-    private String estado;
+    private Boolean estado;
     
     /////////Constructor//////////
-    public Paciente(String nombre, String numeroDocumento, String telefono, Integer edad, String correo, ArrayList<Padecimiento> padecimiento, Date fechaFundacion, String estado) {
+    public Paciente(String nombre, String numeroDocumento, String telefono, Integer edad, String correo, ArrayList<Padecimiento> enfermedades, Date fechaFundacion, Boolean estado)
+    {
         this.nombre = nombre;
         this.numeroDocumento = numeroDocumento;
         this.telefono = telefono;
         this.edad = edad;
         this.correo = correo;
-        this.padecimiento = padecimiento;
-        this.fechaFundacion = fechaFundacion;
+        this.enfermedades = enfermedades;
         this.estado = estado;
     }
     
     ////////Métodos de acceso///////
-
     public String getNombre()
     {
         return nombre;
@@ -87,33 +104,23 @@ public class Paciente
 
     public ArrayList<Padecimiento> getPadecimiento()
     {
-        return padecimiento;
+        return enfermedades;
     }
 
-    public void setPadecimiento(ArrayList<Padecimiento> padecimiento)
+    public void setPadecimiento(ArrayList<Padecimiento> enfermedades)
     {
-        this.padecimiento = padecimiento;
+        this.enfermedades = enfermedades;
     }
-
-    public Date getFechaFundacion()
-    {
-        return fechaFundacion;
-    }
-
-    public void setFechaFundacion(Date fechaFundacion) {
-        this.fechaFundacion = fechaFundacion;
-    }
-
-    public String getEstado()
+    
+    public Boolean getEstado()
     {
         return estado;
     }
 
-    public void setEstado(String estado)
+    public void setEstado(Boolean estado)
     {
         this.estado = estado;
     }
     
     ///////Métodos/////////
-    
 }

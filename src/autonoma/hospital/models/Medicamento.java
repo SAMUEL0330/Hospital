@@ -86,5 +86,5 @@ public abstract class Medicamento
     /**
      * Método del que heredan el cual permitirá calcular el precio de venta de los medicamentos
      */
-    public abstract void calcularPrecioVenta();
+    public abstract void calcularPrecioVenta(String precioVenta);
 }

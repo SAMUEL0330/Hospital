@@ -14,8 +14,12 @@ public class MedicamentoGenerico extends Medicamento
     }
     
     ////////////Métodos///////////
+    /**
+     * Calcula el precio de venta para los medicamentos genéricos
+     * @param precioVenta del medicamento genérico
+     */
     @Override
-    public void calcularPrecioVenta()
+    public void calcularPrecioVenta(String precioVenta)
     {
         
     }

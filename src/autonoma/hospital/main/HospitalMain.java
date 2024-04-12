@@ -1,7 +1,7 @@
 package autonoma.hospital.main;
 
 import javax.swing.JOptionPane;
-import static autonoma.hospital.models.GeneradorReportes.escribirEnArchivo;
+import static autonoma.hospital.models.Reporte.escribirEnArchivo;
 /**
  *
  * @author Samuel Esteban Herrera Bedoya & Alejandra Zapata Castañeda
@@ -18,7 +18,7 @@ public class HospitalMain
         String medicamento = JOptionPane.showInputDialog("Ingrese el nombre del medicamento para tratar la enfermedad:");
 
         // Escribir la enfermedad y el medicamento en el archivo de texto
-        escribirEnArchivo(enfermedad, medicamento);
+        escribirEnArchivo(args);
 
         JOptionPane.showMessageDialog(null, "Información guardada exitosamente en el archivo.");
     }

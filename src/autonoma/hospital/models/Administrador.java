@@ -42,7 +42,6 @@ public class Administrador
     }
    
     //////////////Metodos De Acceso///////////////////////////////////////
-
     public String getNombre()
     {
         return nombre;
@@ -82,5 +81,4 @@ public class Administrador
     {
         this.carrera = carrera;
     }
-   
 }
