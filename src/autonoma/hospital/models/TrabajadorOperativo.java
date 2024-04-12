@@ -38,7 +38,7 @@ public class TrabajadorOperativo extends Trabajador
 
     ///////////Métodos////////////
     @Override
-    public void calcularSalario()
+    public void calcularSalario(Integer salarioBase)
     {
        
     }

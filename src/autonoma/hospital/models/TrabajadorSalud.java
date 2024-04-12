@@ -43,7 +43,7 @@ package autonoma.hospital.models;
     }
 
     @Override
-    public void calcularSalario()
+    public void calcularSalario(Integer salarioBase)
     {
     
     }

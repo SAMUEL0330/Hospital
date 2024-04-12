@@ -86,5 +86,5 @@ public abstract class Trabajador
     /**
      * Método del que heredan el cual permitirá calcular el salario del empleado
      */
-    public abstract void calcularSalario();
+    public abstract void calcularSalario(Integer salarioBase);
 }
