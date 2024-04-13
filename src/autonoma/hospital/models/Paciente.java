@@ -36,11 +36,20 @@ public class Paciente
      * Lista de enfermedades del paciente
      */
     private ArrayList<Padecimiento> enfermedades;
-    private Date fechaFundacion;
     private Boolean estado;
     
     /////////Constructor//////////
-    public Paciente(String nombre, String numeroDocumento, String telefono, Integer edad, String correo, ArrayList<Padecimiento> enfermedades, Date fechaFundacion, Boolean estado)
+    /**
+     * Inicializa el valor de las variables
+     * @param nombre del paciente
+     * @param numeroDocumento del paciente
+     * @param telefono del paciente
+     * @param edad del paciente
+     * @param correo del paciente
+     * @param enfermedades del paciente
+     * @param estado del paciente
+     */
+    public Paciente(String nombre, String numeroDocumento, String telefono, Integer edad, String correo, ArrayList<Padecimiento> enfermedades, Boolean estado)
     {
         this.nombre = nombre;
         this.numeroDocumento = numeroDocumento;

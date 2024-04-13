@@ -2,7 +2,6 @@ package autonoma.hospital.models;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.Date;
 import java.util.Scanner;
 
 /**
@@ -31,24 +30,22 @@ public class Hospital
      */
     private Integer presupuesto;
     /**
-     * Presupuesto del hospital
-     */
-    private Integer metaAnualVenta;
-    /**
-     * Meta anual venta del hospital
+     * Fecha de fundacion del hospital
      */
     private Integer fechaFundacion;
     /**
-     * Fecha de fundacion del hospital
+     * Estado del hospital
      */
     private Boolean estado;
     /**
-     * Estado del hospital
+     * Localizacion de hospital 
      */
     private Coordenada localizacion;
     /**
-     * Localizacion del hospital
+     * Administrador del hospital
      */
+    private Administrador administrador;
+    
     
     //////Constructor////////////////
     /**
@@ -57,12 +54,12 @@ public class Hospital
      * @param direccion del hospital
      * @param telefono del hospital
      * @param presupuesto del hospital
-     * @param metaAnualVenta del hospital
      * @param fechaFundacion del hospital
      * @param estado del hospital
      * @param localizacion del hospital
+     * @param administrador del hospital
      */
-    public Hospital(String nombre, String direccion, String telefono, Integer presupuesto, Integer fechaFundacion, Boolean estado, Coordenada localizacion)
+    public Hospital(String nombre, String direccion, String telefono, Integer presupuesto, Integer fechaFundacion, Boolean estado, Coordenada localizacion, Administrador administrador)
     {
         this.nombre = nombre;
         this.direccion = direccion;
@@ -72,7 +69,7 @@ public class Hospital
         this.estado = estado;
         this.localizacion = localizacion;
     }
-
+    /////////////////Metodos De Acceso/////////
     public String getNombre()
     {
         return nombre;
@@ -142,6 +139,16 @@ public class Hospital
     {
         this.localizacion = localizacion;
     }
+
+    public Administrador getAdministrador() {
+        return administrador;
+    }
+
+    public void setAdministrador(Administrador administrador) {
+        this.administrador = administrador;
+    }
+    
+    
     
     public Integer calcularPresupuestoRestante()
     {
@@ -163,8 +170,9 @@ public class Hospital
         File fichero = new File("C:\\Users\\User\\OneDrive\\Documentos\\NetBeansProjects\\SimuladorCarro\\src\\autonoma\\simuladorcarro\\files\\TallerActualizar.txt");
         Scanner s = null;
         int contador =1;
+        Administrador administrador = new Administrador(" ", " ", 0, " ");
         Coordenada localizacion = new Coordenada(-121.94667417922749, 37.25157313140872);
-        Hospital h= new Hospital(" ", " ", " ", 0, 0, true, localizacion);
+        Hospital h= new Hospital(" ", " "," " , 0, 0, true, localizacion, administrador);
         
         try 
         {
@@ -184,7 +192,7 @@ public class Hospital
                 lineaScanner.close();
                 contador++;
             }
-            h= new Hospital("nombre", "direccion", "telefono", 0, 0, true, localizacion);
+            h= new Hospital(" ", " "," " , 0, 0, true, localizacion, administrador);
             /*c.setTipoMotor(m);
             c.setTipoLlanta(l);*/
             return h;  
