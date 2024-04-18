@@ -31,18 +31,17 @@ public abstract class Trabajador
     /**
      * Salario base del trabajador
      */
-    Integer salarioBase;
+    public Integer salarioBase;
     /**
      * Hospital al que trabajan los empleados
      */
     private Hospital hospital;
     /**
-     * 
+     * Variable que guardará el salario total calculado del trabajador
      */
     protected Double salarioTotal;
 
-    public Trabajador(){
-    }
+    public Trabajador(){}
 
     public Trabajador(String nombre, String numeroDocumento, String edad, Integer salarioBase, Hospital hospital, Double salarioTotal)
     {
@@ -118,7 +117,8 @@ public abstract class Trabajador
     ////////Métodos////////
     /**
      * Método del que heredan el cual permitirá calcular el salario del empleado
-     * @param salarioBase del trabajador
+     * @param hospital
+     * @return 
      */
     public static ArrayList<Trabajador> crearTrabajadorDeDocumento(Hospital hospital)
     {
