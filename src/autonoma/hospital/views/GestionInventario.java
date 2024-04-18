@@ -1,21 +1,23 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
- */
 package autonoma.hospital.views;
+
+import autonoma.hospital.models.Hospital;
 
 /**
  *
- * @author User
+ * @author Samuel Esteban Herrera Bedoya & Alejandra Zapata Castañeda
+ * @version 1.0.0
+ * @since 2024-04-13
  */
-public class GestionInventario extends javax.swing.JDialog {
-
-    /**
-     * Creates new form GestionInventario
-     */
-    public GestionInventario(java.awt.Frame parent, boolean modal) {
+public class GestionInventario extends javax.swing.JDialog
+{
+    private Hospital hospital;
+    private VentanaPrincipal ventanaPricipal;
+    public GestionInventario(java.awt.Frame parent, boolean modal, Hospital hospital, VentanaPrincipal ventanaPrincipal)
+    {
         super(parent, modal);
         initComponents();
+        this.hospital=hospital;
+        this.ventanaPricipal=ventanaPrincipal;
     }
 
     /**
@@ -100,6 +102,11 @@ public class GestionInventario extends javax.swing.JDialog {
         btnVolverFarmacia.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnVolverFarmacia.setText("<- VOLVER ");
         btnVolverFarmacia.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 51, 51), 1, true));
+        btnVolverFarmacia.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnVolverFarmaciaMouseClicked(evt);
+            }
+        });
         btnVolverFarmacia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVolverFarmaciaActionPerformed(evt);
@@ -161,47 +168,9 @@ public class GestionInventario extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnVolverFarmaciaActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GestionInventario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GestionInventario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GestionInventario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GestionInventario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                GestionInventario dialog = new GestionInventario(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
+    private void btnVolverFarmaciaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolverFarmaciaMouseClicked
+        this.dispose();
+    }//GEN-LAST:event_btnVolverFarmaciaMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizarMedicamento;

@@ -22,10 +22,11 @@ public class MedicamentoMarca extends Medicamento
      * @param costo del medicamento
      * @param precioVenta del medicamento
      */
-    public MedicamentoMarca(String fabricante, String nombre, String descripcion, Integer costo, Integer precioVenta)
+    public MedicamentoMarca(String nombre, String descripcion, Integer costo, Double precioVenta, String fabricante)
     {
         super(nombre, descripcion, costo, precioVenta);
         this.fabricante = fabricante;
+        calcularCostoTotal();
     }
     
     ///////Métodos de acceso////////
@@ -39,13 +40,9 @@ public class MedicamentoMarca extends Medicamento
         this.fabricante = fabricante;
     }
     ////////Métodos///////
-    /**
-     * Calcula el precio de venta de los medicamentos de marca popular
-     * @param precioVenta del medicamento popular
-     */
-    @Override
-    public void calcularPrecioVenta(String precioVenta)
+
+    public void calcularCostoTotal()
     {
-        
-    }   
+        precioVenta = costo + (costo * 0.2);
+    }
 }

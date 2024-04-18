@@ -15,13 +15,20 @@ public class TrabajadorOperativo extends Trabajador
    
     ////////Constructor/////////
     /**
-     * Inicializa el valor de las variables 
-     * @param areaTrabajo del empleado
+     * Inicializa el valor de las variables
+     * @param nombre del trabajador
+     * @param numeroDeIdentificacion del trabajador
+     * @param edad del trabajador
+     * @param salarioBase del trabajador
+     * @param areaTrabajo del trabajador
+     * @param hospital en el que trabaja el empleado
+     * @param salarioTotal del trabajador
      */
-    public TrabajadorOperativo(String areaTrabajo, String nombre, String numeroDeIdentificacion, String edad, Integer salarioBase)
+    public TrabajadorOperativo(String nombre, String numeroDeIdentificacion, String edad, Integer salarioBase, String areaTrabajo, Hospital hospital, Double salarioTotal)
     {
-        super(nombre, numeroDeIdentificacion, edad, salarioBase);
+        super(nombre, numeroDeIdentificacion, edad, salarioBase, hospital, salarioTotal);
         this.areaTrabajo = areaTrabajo;
+        calcularSalarioTotal();
     }
     
     //////////////////Metodos De Acceso/////////////////////
@@ -37,12 +44,11 @@ public class TrabajadorOperativo extends Trabajador
 
     ///////////Métodos////////////
     /**
-     * Método heredado que permite calcular el salario del empleado operativo
-     * @param salarioBase 
+     * Método heredado que permite calcular el salario del empleado operativo 
      */
-    @Override
-    public void calcularSalario(Integer salarioBase)
+    public void calcularSalarioTotal()
     {
-       
+        Double base = salarioBase * 0.2;
+        salarioTotal = salarioBase + base;
     }
 }

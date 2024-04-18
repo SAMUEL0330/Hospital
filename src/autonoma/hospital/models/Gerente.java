@@ -5,13 +5,13 @@ package autonoma.hospital.models;
  * @version 0.0.1
  * @since 2024-04-8
  */
-public class Administrador
+public class Gerente
 {
-  ////////////Atributos//////////
+   ///////////Atributos//////////
    /**
     * Nombre del gerente 
     */ 
-   private String nombre;
+   private String nombreGerente;
    /**
     * ID del gerente
     */
@@ -28,28 +28,28 @@ public class Administrador
    //////////////Constructor/////////////////////////
     /**
      * Inicializa valores de las variables 
-     * @param nombre del gerente
+     * @param nombreGerente del gerente
      * @param numeroIdentificacion del gerente 
      * @param edad del gerente
      * @param carrera o profesion del gerente
      */
-    public Administrador(String nombre, String numeroIdentificacion, Integer edad, String carrera)
+    public Gerente(String nombreGerente, String numeroIdentificacion, Integer edad, String carrera)
     {
-        this.nombre = nombre;
+        this.nombreGerente = nombreGerente;
         this.numeroIdentificacion = numeroIdentificacion;
         this.edad = edad;
         this.carrera = carrera;
     }
    
     //////////////Metodos De Acceso///////////////////////////////////////
-    public String getNombre()
+    public String getNombreGerente()
     {
-        return nombre;
+        return nombreGerente;
     }
 
-    public void setNombre(String nombre) 
+    public void setNombreGerente(String nombreGerente) 
     {
-        this.nombre = nombre;
+        this.nombreGerente = nombreGerente;
     }
 
     public String getNumeroIdentificacion()

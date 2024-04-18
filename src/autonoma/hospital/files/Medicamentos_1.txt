@@ -1,0 +1,2 @@
+Acetaminofen;sirve;200;0
+ibuprofeno;sirve;300;1;genfar

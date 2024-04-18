@@ -1,1 +1,2 @@
-Gabriel
+m Gabriel Mora;7410077324;32;1400000;Operativo;Aseo;1680000.0
+Samuel Herrera;4207494934;30;2000000;Operativo;administrativa;2400000.0

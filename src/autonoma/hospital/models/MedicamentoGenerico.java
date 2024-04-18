@@ -8,19 +8,17 @@ package autonoma.hospital.models;
 public class MedicamentoGenerico extends Medicamento
 {
     /////////Constructor//////
-    public MedicamentoGenerico(String nombre, String descripcion, Integer costo, Integer precioVenta)
+    public MedicamentoGenerico(String nombre, String descripcion, Integer costo, Double precioVenta)
     {
         super(nombre, descripcion, costo, precioVenta);
+        calcularCostoTotal();
     }
     
     ////////////Métodos///////////
-    /**
-     * Calcula el precio de venta para los medicamentos genéricos
-     * @param precioVenta del medicamento genérico
-     */
+    
     @Override
-    public void calcularPrecioVenta(String precioVenta)
+    public void calcularCostoTotal()
     {
-        
+        precioVenta = costo + (costo * 0.1);
     }
 }

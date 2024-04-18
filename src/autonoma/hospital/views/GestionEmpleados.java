@@ -1,21 +1,23 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
- */
 package autonoma.hospital.views;
 
-/**
- *
- * @author User
- */
-public class GestionEmpleados extends javax.swing.JDialog {
+import autonoma.hospital.models.Hospital;
 
-    /**
-     * Creates new form GestionEmpleados
-     */
-    public GestionEmpleados(java.awt.Frame parent, boolean modal) {
+/**
+ * 
+ * @author Samuel Esteban Herrera Bedoya & Alejandra Zapata Castañeda
+ * @version 1.0.0
+ * @since 2024-04-13
+ */
+public class GestionEmpleados extends javax.swing.JDialog
+{
+    private Hospital hospital;
+    private VentanaPrincipal ventanaPricipal;
+    public GestionEmpleados(java.awt.Frame parent, boolean modal,Hospital hospital, VentanaPrincipal ventanaPrincipal)
+    {
         super(parent, modal);
         initComponents();
+        this.hospital=hospital;
+        this.ventanaPricipal=ventanaPrincipal;
     }
 
     /**
@@ -116,6 +118,11 @@ public class GestionEmpleados extends javax.swing.JDialog {
         btnVolverTrabajadores.setBackground(new java.awt.Color(255, 0, 0));
         btnVolverTrabajadores.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
         btnVolverTrabajadores.setText("<- VOLVER");
+        btnVolverTrabajadores.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnVolverTrabajadoresMouseClicked(evt);
+            }
+        });
         btnVolverTrabajadores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVolverTrabajadoresActionPerformed(evt);
@@ -180,47 +187,9 @@ public class GestionEmpleados extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnVolverTrabajadoresActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GestionEmpleados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GestionEmpleados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GestionEmpleados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GestionEmpleados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                GestionEmpleados dialog = new GestionEmpleados(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
+    private void btnVolverTrabajadoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolverTrabajadoresMouseClicked
+        this.dispose();
+    }//GEN-LAST:event_btnVolverTrabajadoresMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizarEmpleado;

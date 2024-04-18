@@ -2,6 +2,7 @@ package autonoma.hospital.models;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -26,6 +27,10 @@ public class Hospital
      */
     private String telefono;
     /**
+     * Logo del hospital
+     */
+    private String logo;
+    /**
      * Presupuesto del hospital
      */
     private Integer presupuesto;
@@ -34,44 +39,53 @@ public class Hospital
      */
     private Integer fechaFundacion;
     /**
-     * Estado del hospital
+     * Estado financiero del hospital
      */
-    private Boolean estado;
+    private String estado;
     /**
      * Localizacion de hospital 
      */
     private Coordenada localizacion;
     /**
-     * Administrador del hospital
+     * Gerente del hospital
      */
-    private Administrador administrador;
+    private Gerente gerente;
     
+    private Inventario inventario;
+    /**
+     * Lista de empleados del hospital
+     */
+    private ArrayList<Trabajador> trabajadores;
+    
+    /**
+     * Lista de pacientes del hospital
+     */
+    private ArrayList<Paciente> pacientes;
     
     //////Constructor////////////////
-    /**
-     * Inicializa valores de las variables 
-     * @param nombre del hospital
-     * @param direccion del hospital
-     * @param telefono del hospital
-     * @param presupuesto del hospital
-     * @param fechaFundacion del hospital
-     * @param estado del hospital
-     * @param localizacion del hospital
-     * @param administrador del hospital
-     */
-    public Hospital(String nombre, String direccion, String telefono, Integer presupuesto, Integer fechaFundacion, Boolean estado, Coordenada localizacion, Administrador administrador)
+    public Hospital()
     {
+    }
+
+    public Hospital(String nombre, String direccion, String telefono, String logo, Integer presupuesto, Integer fechaFundacion, String estado, Coordenada localizacion, Gerente gerente, Inventario inventario, ArrayList<Trabajador> trabajadores, ArrayList<Paciente> pacientes) {
         this.nombre = nombre;
         this.direccion = direccion;
         this.telefono = telefono;
+        this.logo = logo;
         this.presupuesto = presupuesto;
         this.fechaFundacion = fechaFundacion;
         this.estado = estado;
         this.localizacion = localizacion;
+        this.gerente = gerente;
+        this.inventario = inventario;
+        this.trabajadores = trabajadores;
+        this.pacientes = pacientes;
     }
+
+    
+
     /////////////////Metodos De Acceso/////////
-    public String getNombre()
-    {
+    public String getNombre() {
         return nombre;
     }
 
@@ -100,6 +114,16 @@ public class Hospital
         this.telefono = telefono;
     }
 
+    public String getLogo()
+    {
+        return logo;
+    }
+
+    public void setLogo(String logo)
+    {
+        this.logo = logo;
+    }
+    
     public Integer getPresupuesto()
     {
         return presupuesto;
@@ -120,12 +144,12 @@ public class Hospital
         this.fechaFundacion = fechaFundacion;
     }
 
-    public Boolean getEstado()
+    public String getEstado()
     {
         return estado;
     }
 
-    public void setEstado(Boolean estado)
+    public void setEstado(String estado)
     {
         this.estado = estado;
     }
@@ -140,17 +164,136 @@ public class Hospital
         this.localizacion = localizacion;
     }
 
-    public Administrador getAdministrador() {
-        return administrador;
+    public Gerente getGerente()
+    {
+        return gerente;
     }
 
-    public void setAdministrador(Administrador administrador) {
-        this.administrador = administrador;
+    public void setGerente(Gerente gerente)
+    {
+        this.gerente = gerente;
+    }
+
+    public Inventario getInventario() {
+        return inventario;
+    }
+
+    public void setInventario(Inventario inventario) {
+        this.inventario = inventario;
     }
     
+    public ArrayList<Trabajador> getTrabajadores()
+    {
+        return trabajadores;
+    }
+
+    public void setTrabajadores(ArrayList<Trabajador> trabajadores)
+    {
+        this.trabajadores = trabajadores;
+    }
+
+    public ArrayList<Paciente> getPacientes() {
+        return pacientes;
+    }
+
+    public void setPacientes(ArrayList<Paciente> pacientes) {
+        this.pacientes = pacientes;
+    }
     
+     /// Metodos
     
-    public Integer calcularPresupuestoRestante()
+    public void registrarPatrocinio()
+    {
+        
+    }
+    
+    public static Hospital creaGerenteDeDocumento()
+    {
+        File fichero = new File("C:\\Users\\User\\OneDrive\\Documentos\\NetBeansProjects\\Hospital\\src\\autonoma\\hospital\\files\\Medicamentos.txt");
+        Scanner scanner = null;
+        Hospital hospitalNuevo= new Hospital();
+        
+        try 
+        {
+            scanner = new Scanner(fichero);
+            while (scanner.hasNextLine())
+            {
+                String linea = scanner.nextLine();
+                String[] partes = linea.split(":");
+
+                if (partes.length >= 2)
+                {
+                    String clave = partes[0];
+                    String valor = linea.substring(clave.length() + 1);
+
+                    switch (clave)
+                    {
+                        case "Nombre":
+                            hospitalNuevo.setNombre(valor);
+                            System.out.println("Entré");
+                            break;
+                        case "Direccion":
+                            hospitalNuevo.setDireccion(valor);
+                            break;
+                        case "Telefono":
+                            hospitalNuevo.setTelefono(valor);
+                            break;
+                        case "Logo":
+                            hospitalNuevo.setLogo(valor);
+                            break;
+                        case "Presupuesto":
+                            hospitalNuevo.setPresupuesto(0);
+                            break;
+                        case "Fecha de fundacion":
+                            hospitalNuevo.setFechaFundacion(0);
+                            break;
+                        case "Estado":
+                            hospitalNuevo.setEstado(valor);
+                            break;
+                        case "Localizacion":
+                            String[] coordenadas = valor.split(";");
+                            double latitud = Double.parseDouble(coordenadas[0]);
+                            double longitud = Double.parseDouble(coordenadas[1]);
+                            hospitalNuevo.getLocalizacion().setLatitud(latitud);
+                            break;
+                        case "Nombre gerente":
+                            hospitalNuevo.gerente.getNombreGerente();
+                            break;
+                        case "Numero de documento gerente":
+                            hospitalNuevo.gerente.getNumeroIdentificacion();
+                            break;
+                        case "Edad gerente":
+                            hospitalNuevo.gerente.getEdad();
+                            break;
+                        case "Carrera gerente":
+                            hospitalNuevo.gerente.getCarrera();
+                            break;
+                        default:
+                            // Ignorar líneas que no corresponden a datos del hospital
+                            break;
+                    }
+                }
+            }
+            //System.out.println("Soy el archivo");
+            //System.out.println("nombre" + hospitalNuevo.getNombre());
+            //System.out.println("nombre gerente" + hospitalNuevo.getGerente().getNombreGerente() + hospitalNuevo.getLocalizacion().getLatitud() + " " + hospitalNuevo.getLocalizacion().getLongitud());
+            
+            return hospitalNuevo;  
+        } catch (FileNotFoundException ex) {
+                System.out.println("Mensaje: " + ex.getMessage());
+        } finally {
+            try 
+            {
+                if (scanner != null)
+                    scanner.close();
+            } catch (Exception ex2) {
+                System.out.println("Mensaje 2: " + ex2.getMessage());
+            }
+        }
+        return null;
+    }
+    
+      public Integer calcularPresupuestoRestante()
     {
         return presupuesto;
     }
@@ -160,53 +303,4 @@ public class Hospital
         return false;
     }
     
-    public void registrarPatrocinio()
-    {
-        
-    }
-    
-    public static Hospital creaGerenteDeDocumento()
-    {
-        File fichero = new File("C:\\Users\\User\\OneDrive\\Documentos\\NetBeansProjects\\SimuladorCarro\\src\\autonoma\\simuladorcarro\\files\\TallerActualizar.txt");
-        Scanner s = null;
-        int contador =1;
-        Administrador administrador = new Administrador(" ", " ", 0, " ");
-        Coordenada localizacion = new Coordenada(-121.94667417922749, 37.25157313140872);
-        Hospital h= new Hospital(" ", " "," " , 0, 0, true, localizacion, administrador);
-        
-        try 
-        {
-            s = new Scanner(fichero);
-            while (s.hasNextLine())
-            {
-                Scanner lineaScanner = new Scanner(s.nextLine());
-                lineaScanner.skip("\\w+\\s");
-                String palabra = lineaScanner.next();
-                if(contador == 1)
-                {
-                    h.setNombre(palabra);
-                }else{
-                    //m.setCilindraje(palabra);
-                }
-                System.out.println(palabra);
-                lineaScanner.close();
-                contador++;
-            }
-            h= new Hospital(" ", " "," " , 0, 0, true, localizacion, administrador);
-            /*c.setTipoMotor(m);
-            c.setTipoLlanta(l);*/
-            return h;  
-        } catch (FileNotFoundException ex) {
-                System.out.println("Mensaje: " + ex.getMessage());
-        } finally {
-                try 
-                {
-                    if (s != null)
-                        s.close();
-                } catch (Exception ex2) {
-                        System.out.println("Mensaje 2: " + ex2.getMessage());
-                }
-        }
-    return null;
-    }
 }

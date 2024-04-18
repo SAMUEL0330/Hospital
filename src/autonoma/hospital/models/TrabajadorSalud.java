@@ -27,11 +27,15 @@ package autonoma.hospital.models;
      * @param edad del trabajador de la salud
      * @param salarioBase del trabajador de la salud
      */
-    public TrabajadorSalud(String especialidad, Integer numeroHorasTrabajadas, String nombre, String numeroDeIdentificacion, String edad, Integer salarioBase)
+    public TrabajadorSalud(String nombre, String numeroDeIdentificacion, String edad, Integer salarioBase, String especialidad, Integer numeroHorasTrabajadas, Hospital hospital, Double salarioTotal)
     {
-        super(nombre, numeroDeIdentificacion, edad, salarioBase);
+        super(nombre, numeroDeIdentificacion, edad, salarioBase, hospital, salarioTotal);
         this.especialidad = especialidad;
         this.numeroHorasTrabajadas = numeroHorasTrabajadas;
+        calcularSalarioTotal();
+    }
+
+    public TrabajadorSalud(){
     }
     
     ///////////////Metodos De Acceso////////////////////
@@ -59,9 +63,10 @@ package autonoma.hospital.models;
      * Método heredado para calcular el salario de un trabajador de la salud
      * @param salarioBase de del trabajador de la salud
      */
-    @Override
-    public void calcularSalario(Integer salarioBase)
-    {
     
+    public void calcularSalarioTotal() {
+        Double base = salarioBase * 0.012;
+        Double valorHoras = base * getNumeroHorasTrabajadas();
+        salarioTotal = salarioBase + valorHoras;
     }
  }

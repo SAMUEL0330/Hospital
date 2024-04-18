@@ -1,12 +1,14 @@
 package autonoma.hospital.main;
 
-import autonoma.hospital.models.Administrador;
-import autonoma.hospital.models.Coordenada;
 import autonoma.hospital.views.VentanaPrincipal;
 import autonoma.hospital.models.Hospital;
-import javax.swing.JOptionPane;
-import static autonoma.hospital.models.Reporte.escribirEnArchivo;
-import static autonoma.hospital.models.Reporte.solicitarDatos;
+import autonoma.hospital.models.Inventario;
+import autonoma.hospital.models.Medicamento;
+import autonoma.hospital.models.Paciente;
+import autonoma.hospital.models.Padecimiento;
+import autonoma.hospital.models.Trabajador;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
 /**
  *
  * @author Samuel Esteban Herrera Bedoya & Alejandra Zapata Castañeda
@@ -16,19 +18,30 @@ public class HospitalMain
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args)
+    public static void main(String[] args) throws FileNotFoundException
     {
-        Coordenada localizacion = new Coordenada(-121.94667417922749, 37.25157313140872);
-        Hospital hospital = new Hospital("San José", "2425 Samaritan Dr, CA 95124, Estados Unidos", "+1 408-559-2011", 10000000, 1945, Boolean.TRUE, localizacion);
-        /*
-        String enfermedad = JOptionPane.showInputDialog("Ingrese el nombre de la enfermedad:");
-        String medicamento = JOptionPane.showInputDialog("Ingrese el nombre del medicamento para tratar la enfermedad:");
-
-        String[] datos = solicitarDatos();
-        escribirEnArchivo(args);
-
-        JOptionPane.showMessageDialog(null, "Información guardada exitosamente en el archivo.");
-        */
+        // Lectura archivo Hospital
+        Hospital hospital = Hospital.creaGerenteDeDocumento();
+        
+       // Lectura archivos Medicamentos 
+        ArrayList<Medicamento> listaMedicamentos = Medicamento.crearMedicamentoDeDocumento();
+        //Lectura Archivo Padecimientos
+        ArrayList<Padecimiento> listaPadecimientos = Padecimiento.crearPadecimientos(listaMedicamentos);
+        // Lectura Archivo Pacientes
+        ArrayList<Paciente> listaPacientes = Paciente.crearPacientesDeDocumento(listaPadecimientos);
+        //Lectura Archivo Trabajadores
+        ArrayList<Trabajador> listaTrabajadores = Trabajador.crearTrabajadorDeDocumento(hospital);
+        
+        //Inicializar Inventario
+        Inventario inventario = new Inventario("UAM_INV_0001", 2024, null);
+        inventario.setMedicamentos(listaMedicamentos);
+        
+        // Completar informacion Hospital
+        hospital.setTrabajadores(listaTrabajadores);
+        hospital.setPacientes(listaPacientes);
+        hospital.setInventario(inventario);
+        
+        //Inicializacion Pantallas
         VentanaPrincipal ventana=new VentanaPrincipal(hospital);
         ventana.setVisible(true);
     }

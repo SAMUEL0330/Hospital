@@ -8,7 +8,7 @@ public class CurarBuenEstadoException extends Exception
 {
     public CurarBuenEstadoException()
     {
-        super("El paciente se encuentra en buen estado, no hace falta curarlo");
+        super("El hospital San José está en quiebra, debe registrar patrocinio y no puede registrar más medicamentos.");
     }
     
     public CurarBuenEstadoException(String mensaje)
