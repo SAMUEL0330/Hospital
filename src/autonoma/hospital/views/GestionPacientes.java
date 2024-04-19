@@ -1,25 +1,30 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
- */
 package autonoma.hospital.views;
 
 import autonoma.hospital.models.Hospital;
-
+import autonoma.hospital.models.Paciente;
+import autonoma.hospital.models.Padecimiento;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 /**
  *
- * @author User
+ * @author Samuel Esteban Herrera Bedoya & Alejandra Zapata Castañeda
  */
-public class GestionPacientes extends javax.swing.JDialog {
-
+public class GestionPacientes extends javax.swing.JDialog
+{
     private Hospital hospital;
     private VentanaPrincipal ventanaPricipal;
+    ArrayList<Paciente> pacientes;
+    
     public GestionPacientes(java.awt.Frame parent, boolean modal, Hospital hospital, VentanaPrincipal ventanaPrincipal)
     {
         super(parent, modal);
         initComponents();
         this.hospital=hospital;
         this.ventanaPricipal=ventanaPrincipal;
+        pacientes= hospital.obtenerListaPacientes();
+        llenarTabla();
     }
     
     @SuppressWarnings("unchecked")
@@ -51,7 +56,7 @@ public class GestionPacientes extends javax.swing.JDialog {
             .addGroup(fondoTituloPacientesLayout.createSequentialGroup()
                 .addGap(152, 152, 152)
                 .addComponent(jLabel1)
-                .addContainerGap(153, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         fondoTituloPacientesLayout.setVerticalGroup(
             fondoTituloPacientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -89,11 +94,29 @@ public class GestionPacientes extends javax.swing.JDialog {
         });
         tablaPacientes.getTableHeader().setReorderingAllowed(false);
 
+        btnAgregarPaciente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/autonoma/hospital/images/Paciente16.png"))); // NOI18N
         btnAgregarPaciente.setText("Agregar");
+        btnAgregarPaciente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAgregarPacienteMouseClicked(evt);
+            }
+        });
 
+        btnActualizarPaciente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/autonoma/hospital/images/editar16.png"))); // NOI18N
         btnActualizarPaciente.setText("Actualizar");
+        btnActualizarPaciente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnActualizarPacienteMouseClicked(evt);
+            }
+        });
 
+        btnEliminarPaciente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/autonoma/hospital/images/Cancel.png"))); // NOI18N
         btnEliminarPaciente.setText("Eliminar");
+        btnEliminarPaciente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEliminarPacienteMouseClicked(evt);
+            }
+        });
 
         btnVolverPacientes.setBackground(new java.awt.Color(255, 0, 0));
         btnVolverPacientes.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -119,11 +142,11 @@ public class GestionPacientes extends javax.swing.JDialog {
                     .addGroup(fondoPacientesLayout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addComponent(btnAgregarPaciente)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnActualizarPaciente)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnEliminarPaciente)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                         .addComponent(btnVolverPacientes)
                         .addGap(14, 14, 14))))
         );
@@ -159,6 +182,50 @@ public class GestionPacientes extends javax.swing.JDialog {
     private void btnVolverPacientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolverPacientesMouseClicked
         this.dispose();
     }//GEN-LAST:event_btnVolverPacientesMouseClicked
+
+    private void btnAgregarPacienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarPacienteMouseClicked
+        AgregarPaciente vAgregarPaciente = new AgregarPaciente(ventanaPricipal, rootPaneCheckingEnabled, hospital, ventanaPricipal);
+        vAgregarPaciente.setVisible(true);
+    }//GEN-LAST:event_btnAgregarPacienteMouseClicked
+
+    private void btnActualizarPacienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarPacienteMouseClicked
+        int fila = this.tablaPacientes.getSelectedRow();
+        if(fila>=0)
+        {
+            Paciente p = this.pacientes.get(fila);
+            ActualizarPaciente vActualizarPaciente = new ActualizarPaciente(ventanaPricipal, rootPaneCheckingEnabled);
+            vActualizarPaciente.setVisible(true);
+        }else{
+            JOptionPane.showMessageDialog(this, "Por favor seleccione el producto que desea eliminar");
+        }
+    }//GEN-LAST:event_btnActualizarPacienteMouseClicked
+
+    public void llenarTabla()
+    {
+        DefaultTableModel modelDefault = new DefaultTableModel(new String[]{"Nombre","Documento", "Telefono", "Edad", "Enfermedades"}, this.pacientes.size());
+        this.tablaPacientes.setModel(modelDefault);
+        
+        TableModel dataModel = tablaPacientes.getModel();
+        for (int i = 0; i < this.pacientes.size(); i++) 
+        {
+            Paciente p = this.pacientes.get(i);
+            
+            dataModel.setValueAt(p.getNombre(),i,0);
+            dataModel.setValueAt(p.getNumeroDocumento(),i,1);
+            dataModel.setValueAt(p.getTelefono(),i,2);
+            dataModel.setValueAt(p.getEdad(),i,3);
+            String enfermedades= "";
+            System.out.println("e:"+ p.getEnfermedades().size());
+            for(Padecimiento e: p.getEnfermedades()){
+                enfermedades = enfermedades + e.getNombre()+";";
+            }
+            dataModel.setValueAt(enfermedades,i,4);
+            
+        } 
+    }
+    private void btnEliminarPacienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarPacienteMouseClicked
+        
+    }//GEN-LAST:event_btnEliminarPacienteMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizarPaciente;

@@ -37,7 +37,6 @@ public class Inventario
     }
 
     //////////Métodos de acceso/////////
-
     public ArrayList<Medicamento> getMedicamentos()
     {
         return medicamentos;
@@ -96,25 +95,6 @@ public class Inventario
         return null;
     }
     
-    /**
-     * Busca un producto en el inventario basándose en su ID.
-     * @param id ID del producto que se desea buscar en el inventario.
-     * @return El objeto Producto encontrado si existe en el inventario, null si no se encuentra.
-     */
-    /*
-    public Medicamento buscarProducto(long id)
-    {    
-        for(int i=0;i<this.medicamentos.size();i++)
-        {
-            Medicamento p = this.medicamentos.get(i);
-            if(p.getId() == id)
-            {
-                return p;
-            }
-        }
-        return null;   
-    }
-    */
     /**
      * Busca un producto en el inventario basándose en su nombre.
      * @param medicamentos del inventario

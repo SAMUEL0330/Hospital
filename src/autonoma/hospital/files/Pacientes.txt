@@ -1,10 +1,12 @@
-Juan Alimaña;1002654068;1085761483;88;nixukojefa-9400@yopmail.com;Padecimiento: Infeccion urinaria,Rinitis;0
-Camila Pinzon;1011596874;8625458281;43;freffuwukoippau-1346@yopmail.com;Padecimiento: Diabetes, Onicomicosis;0
-Freddy Mercury;1001546982;4220213682;57;grutouyuneippi-9979@yopmail.com;Padecimiento: Acidez;0
-Maria Magadalena;1002689435;4397570767;58;jomedabreddo-5444@yopmail.com;Padecimiento: Amigdalitis;0
-Humberto Velez;1048753264;9510086141;54;hetuzoxoka-8898@yopmail.com;Padecimiento: Otitis, Onicomicosis;0
-Consuelo Dubai;1001545987;6242676137;19;treutroippewaudau-8179@yopmail.com;Padecimiento: Sindrome de intestino irritable, Dermatitis;0
-Isidro Herrera;1011521344;6092987750;97;geucroittacrubre-6871@yopmail.com;Padecimiento: Asma, Rinitis, Amigdalitis;1
-Pedro Sanchez;1002465806;3499562930;94;gratoireifipi-8903@yopmail.com;Padecimiento: Dermatitis;0
-Lina Tejeiro;1001654891;322458745;17;zajefrayigrau-2544@yopmail.com;Padecimiento: Rinitis, Otitis;0
-Nora Hernandez;1101268474;3162587004;18;gugavoicramma-8618@yopmail.com;Padecimiento: Otitis;0
+Juan Alimaña;1002654068;1085761483;88;nixukojefa-9400@yopmail.com;Padecimiento: diarrea,mareo;0
+Camila Pinzon;1011596874;8625458281;43;freffuwukoippau-1346@yopmail.com;Padecimiento: diarrea, mareo;0
+Freddy Mercury;1001546982;4220213682;57;grutouyuneippi-9979@yopmail.com;Padecimiento: diarrea;0
+Maria Magadalena;1002689435;4397570767;58;jomedabreddo-5444@yopmail.com;Padecimiento: diarrea;0
+Humberto Velez;1048753264;9510086141;54;hetuzoxoka-8898@yopmail.com;Padecimiento: diarrea, mareo;0
+Consuelo Dubai;1001545987;6242676137;19;treutroippewaudau-8179@yopmail.com;Padecimiento: mareo;0
+Isidro Herrera;1011521344;6092987750;97;geucroittacrubre-6871@yopmail.com;Padecimiento: diarrea, mareo;1
+Pedro Sanchez;1002465806;3499562930;94;gratoireifipi-8903@yopmail.com;Padecimiento: diarrea;0
+Lina Tejeiro;1001654891;322458745;17;zajefrayigrau-2544@yopmail.com;Padecimiento: diarrea, mareo;0
+Catalina;10223449;311354;25;ddd@gg.v;Padecimiento: dd;0
+SAMUEL;1253;310;20;cd@g.v;Padecimiento: N/A;0
+felipe;5888;0000;5;f@h.c;Padecimiento: N/A;0

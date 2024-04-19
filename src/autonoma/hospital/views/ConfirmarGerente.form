@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JDialogFormInfo">
+  <NonVisualComponents>
+    <Component class="javax.swing.JTextField" name="inputSalarioBaseTrabajador3">
+    </Component>
+    <Component class="javax.swing.JLabel" name="SalarioBase3">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="NOMBRE"/>
+      </Properties>
+    </Component>
+  </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
   </Properties>
@@ -45,36 +54,93 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Component id="fondoTituloAgregarMedicamento" alignment="0" max="32767" attributes="0"/>
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
-                  <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="157" max="32767" attributes="0"/>
-                  <Component id="btnVolverAddGerente" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                      <Component id="inputNombreHospital" alignment="1" min="-2" pref="280" max="-2" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="SalarioBase1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="inputNombreGerente" min="-2" pref="280" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="SalarioBase2" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="inputNumeroDocumento" min="-2" pref="280" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="SalarioBase4" min="-2" max="-2" attributes="0"/>
+                              <Component id="SalarioBase5" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="112" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="inputCarrera" min="-2" pref="280" max="-2" attributes="0"/>
+                              <Component id="inputEdad" min="-2" pref="280" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Component id="Edad2" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="inputEstadoHospital" min="-2" pref="280" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Component id="SalarioBase6" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="inputPresupuesto" min="-2" pref="280" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="NumeroDocumento" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="inputDireccion" min="-2" pref="280" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="Edad" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="inputTelefono" min="-2" pref="280" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="Nombre1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="inputFechaFundacion" min="-2" pref="280" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="NumeroDocumento1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="inputLatitud" min="-2" pref="280" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Component id="Edad1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="inputLongitud" min="-2" pref="280" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="175" max="-2" attributes="0"/>
+                          <Component id="btnActualizarInformacion" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
+                          <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="jLabel4" min="-2" pref="37" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="145" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="btnVolverAddGerente" alignment="1" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <EmptySpace pref="40" max="32767" attributes="0"/>
               </Group>
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="SalarioBase" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="inputSalarioBaseTrabajador" min="-2" pref="280" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="Edad" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="NumeroDocumento" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="Nombre" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="inputNombreGerente" alignment="1" min="-2" pref="280" max="-2" attributes="0"/>
-                                  <Component id="inputNumeroDocumentoTrabajador" alignment="1" min="-2" pref="280" max="-2" attributes="0"/>
-                                  <Component id="inputEdadTrabajador" alignment="1" min="-2" pref="280" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                      </Group>
-                      <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                      <Component id="Nombre" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="670" max="32767" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -83,39 +149,88 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <Component id="fondoTituloAgregarMedicamento" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="196" max="32767" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="inputNombreHospital" min="-2" pref="34" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-                      <Group type="102" alignment="1" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                          <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="jPanel1" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                          <Component id="btnActualizarInformacion" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="btnVolverAddGerente" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="inputDireccion" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                                      <Component id="NumeroDocumento" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="inputTelefono" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                                      <Component id="Edad" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="inputPresupuesto" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                                      <Component id="SalarioBase6" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="inputFechaFundacion" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                                      <Component id="Nombre1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="inputEstadoHospital" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                                      <Component id="Edad2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="inputLatitud" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                                      <Component id="NumeroDocumento1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="inputLongitud" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                                      <Component id="Edad1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="inputNombreGerente" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                                  <Component id="SalarioBase1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="inputNumeroDocumento" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                              <Component id="SalarioBase2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="inputEdad" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                              <Component id="SalarioBase4" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="inputCarrera" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                              <Component id="SalarioBase5" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace pref="28" max="32767" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
               </Group>
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="inputNombreGerente" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="Nombre" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="inputNumeroDocumentoTrabajador" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="NumeroDocumento" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="inputEdadTrabajador" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="Edad" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="inputSalarioBaseTrabajador" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="SalarioBase" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace pref="73" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
+                      <Component id="Nombre" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="488" max="32767" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -133,7 +248,7 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="158" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="326" max="-2" attributes="0"/>
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -155,7 +270,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="18" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="REGISTRAR GERENTE"/>
+                <Property name="text" type="java.lang.String" value="REGISTRAR INFORMACI&#xd3;N"/>
               </Properties>
             </Component>
           </SubComponents>
@@ -182,35 +297,33 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVolverAddGerenteActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="inputNumeroDocumentoTrabajador">
+        <Component class="javax.swing.JTextField" name="inputDireccion">
         </Component>
-        <Component class="javax.swing.JTextField" name="inputNombreGerente">
+        <Component class="javax.swing.JTextField" name="inputNombreHospital">
         </Component>
-        <Component class="javax.swing.JTextField" name="inputSalarioBaseTrabajador">
+        <Component class="javax.swing.JTextField" name="inputPresupuesto">
         </Component>
-        <Component class="javax.swing.JTextField" name="inputEdadTrabajador">
+        <Component class="javax.swing.JTextField" name="inputTelefono">
         </Component>
         <Component class="javax.swing.JLabel" name="Nombre">
           <Properties>
-            <Property name="text" type="java.lang.String" value="NOMBRE"/>
+            <Property name="text" type="java.lang.String" value="NOMBRE DEL HOSPITAL"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="NumeroDocumento">
           <Properties>
-            <Property name="text" type="java.lang.String" value="NUMERO IDENTIFICACION"/>
+            <Property name="text" type="java.lang.String" value="DIRECCION"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="Edad">
           <Properties>
-            <Property name="text" type="java.lang.String" value="EDAD"/>
+            <Property name="text" type="java.lang.String" value="TELEFONO"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="SalarioBase">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="CARRERA"/>
-          </Properties>
-        </Component>
-        <Container class="javax.swing.JPanel" name="jPanel1">
+        <Container class="javax.swing.JPanel" name="btnActualizarInformacion">
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnActualizarInformacionMouseClicked"/>
+          </Events>
 
           <Layout>
             <DimensionLayout dim="0">
@@ -238,11 +351,92 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/autonoma/hospital/images/Gerente50.png"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value=" CONFIRMAR"/>
+                <Property name="text" type="java.lang.String" value="ACTUALIZAR"/>
               </Properties>
             </Component>
           </SubComponents>
         </Container>
+        <Component class="javax.swing.JTextField" name="inputLatitud">
+        </Component>
+        <Component class="javax.swing.JTextField" name="inputFechaFundacion">
+        </Component>
+        <Component class="javax.swing.JTextField" name="inputNombreGerente">
+        </Component>
+        <Component class="javax.swing.JTextField" name="inputLongitud">
+        </Component>
+        <Component class="javax.swing.JLabel" name="Nombre1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="FECHA FUNDACION"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="NumeroDocumento1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="LATITUD"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="Edad1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="LONGITUD"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="SalarioBase1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="NOMBRE DEL GERENTE"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="inputNumeroDocumento">
+        </Component>
+        <Component class="javax.swing.JLabel" name="SalarioBase2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="NUMERO DE DOCUMENTO"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="inputEdad">
+        </Component>
+        <Component class="javax.swing.JLabel" name="SalarioBase4">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="EDAD"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="inputCarrera">
+        </Component>
+        <Component class="javax.swing.JLabel" name="SalarioBase5">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="CARRERA"/>
+          </Properties>
+        </Component>
+        <Container class="javax.swing.JPanel" name="jPanel1">
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <EmptySpace min="0" pref="319" max="32767" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+        </Container>
+        <Component class="javax.swing.JLabel" name="jLabel4">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="LOGO"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="inputEstadoHospital">
+        </Component>
+        <Component class="javax.swing.JLabel" name="SalarioBase6">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="PRESUPUESTO"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="Edad2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="ESTADO"/>
+          </Properties>
+        </Component>
       </SubComponents>
     </Container>
   </SubComponents>

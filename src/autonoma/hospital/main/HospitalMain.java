@@ -30,7 +30,7 @@ public class HospitalMain
         // Lectura Archivo Pacientes
         ArrayList<Paciente> listaPacientes = Paciente.crearPacientesDeDocumento(listaPadecimientos);
         //Lectura Archivo Trabajadores
-        ArrayList<Trabajador> listaTrabajadores = Trabajador.crearTrabajadorDeDocumento(hospital);
+        ArrayList<Trabajador> listaTrabajadores = Trabajador.crearTrabajadorDeDocumento();
         
         //Inicializar Inventario
         Inventario inventario = new Inventario("UAM_INV_0001", 2024, null);

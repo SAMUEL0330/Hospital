@@ -2,7 +2,7 @@ package autonoma.hospital.models;
 /**
  * Representa un medicamento genérico en el inventario de la farmacia.
  * @author Samuel Esteban Herrera Bedoya & Alejandra Zapata Castañeda
- * @version 0.0.1
+ * @version 1.0.0
  * @since 2024-04-8
  */
 public class MedicamentoGenerico extends Medicamento
@@ -15,7 +15,6 @@ public class MedicamentoGenerico extends Medicamento
     }
     
     ////////////Métodos///////////
-    
     @Override
     public void calcularCostoTotal()
     {

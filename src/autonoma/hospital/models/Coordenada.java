@@ -27,6 +27,11 @@ public class Coordenada
         this.latitud = latitud;
         this.longitud = longitud;
     }
+
+    public Coordenada(double longitud)
+    {
+        this.longitud = longitud;
+    }
     
     ///////Métodos de acceso///////
     public double getLongitud() 

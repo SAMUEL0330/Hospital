@@ -1,13 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package autonoma.hospital.exceptions;
-
 /**
  *
- * @author User
+ * @author Samuel Esteban Herrera Bedoya & Alejandra Zapata Castañeda
  */
-public class MedicamentoEquivocadoException {
-    
+public class MedicamentoEquivocadoException extends Exception
+{
+    public MedicamentoEquivocadoException()
+    {
+        super("El hospital está en banca rota, debe registrar patrocinio para hacer una nueva nómina");
+    }
 }

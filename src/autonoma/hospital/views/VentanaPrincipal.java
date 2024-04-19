@@ -1,7 +1,10 @@
 package autonoma.hospital.views;
 
 import autonoma.hospital.models.Hospital;
+import autonoma.hospital.models.Paciente;
+import autonoma.hospital.models.Trabajador;
 import java.awt.Color;
+import java.util.ArrayList;
 import javax.swing.JPanel;
 /**
  * Primer interfaz del proyecto
@@ -249,7 +252,8 @@ public class VentanaPrincipal extends javax.swing.JFrame
     }//GEN-LAST:event_panelReportesMouseClicked
 
     private void panelGerenteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelGerenteMouseClicked
-        
+        ConfirmarGerente vConfirmarGerente = new ConfirmarGerente(this, rootPaneCheckingEnabled, hospital);
+        vConfirmarGerente.setVisible(true);
     }//GEN-LAST:event_panelGerenteMouseClicked
 
     private void panelFarmaciaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelFarmaciaMouseClicked
@@ -258,7 +262,8 @@ public class VentanaPrincipal extends javax.swing.JFrame
     }//GEN-LAST:event_panelFarmaciaMouseClicked
 
     private void panelEmpleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelEmpleadosMouseClicked
-        GestionEmpleados vEmpleados = new GestionEmpleados(this, rootPaneCheckingEnabled, hospital, this);
+        ArrayList<Trabajador> trabajadores = new ArrayList<>();
+        GestionEmpleados vEmpleados = new GestionEmpleados(this, rootPaneCheckingEnabled, hospital, this, trabajadores);
         vEmpleados.setVisible(true);
     }//GEN-LAST:event_panelEmpleadosMouseClicked
 

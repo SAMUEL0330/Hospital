@@ -1,2 +1,4 @@
-m Gabriel Mora;7410077324;32;1400000;Operativo;Aseo;1680000.0
-Samuel Herrera;4207494934;30;2000000;Operativo;administrativa;2400000.0
+Samuel Herrera;1234567489;25;250000;Salud;fonoaudilogia;20;310000.0
+catalina;123456;22;12344;Operativo;15750.944;14812.8
+felipe nieto;75091975;25;2800000;Operativo;3136000.0;3360000.0
+Maxi;105489536;25;500000;Operativo;600000.0

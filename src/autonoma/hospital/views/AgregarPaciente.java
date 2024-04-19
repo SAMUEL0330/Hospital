@@ -1,4 +1,10 @@
 package autonoma.hospital.views;
+
+import autonoma.hospital.models.Hospital;
+import autonoma.hospital.models.Paciente;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Samuel Esteban Herrera Bedoya & Alejandra Zapata Castañeda
@@ -7,13 +13,18 @@ package autonoma.hospital.views;
  */
 public class AgregarPaciente extends javax.swing.JDialog
 {
-    /**
-     * Creates new form AgregarMedicamento
-     */
-    public AgregarPaciente(java.awt.Frame parent, boolean modal)
+    private Hospital hospital;
+    private VentanaPrincipal ventanaPrincipal;
+    ArrayList<Paciente> pacientes;
+    
+    
+    public AgregarPaciente(java.awt.Frame parent, boolean modal, Hospital hospital, VentanaPrincipal ventanaPrincipal)
     {
         super(parent, modal);
         initComponents();
+        this.hospital=hospital;
+        this.ventanaPrincipal=ventanaPrincipal;
+        
     }
 
     /**
@@ -29,17 +40,17 @@ public class AgregarPaciente extends javax.swing.JDialog
         fondoTituloAgregarPaciente = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnVolverAddPaciente = new javax.swing.JButton();
-        inputNumeroDocumentoTrabajador = new javax.swing.JTextField();
-        inputNombreTrabajador = new javax.swing.JTextField();
-        inputSalarioBaseTrabajador = new javax.swing.JTextField();
-        inputEdadTrabajador = new javax.swing.JTextField();
+        inputNumeroDocumentoPaciente = new javax.swing.JTextField();
+        inputNombrePaciente = new javax.swing.JTextField();
+        inputEdadPaciente = new javax.swing.JTextField();
+        inputTelefonoPaciente = new javax.swing.JTextField();
         Nombre = new javax.swing.JLabel();
         NumeroDocumento = new javax.swing.JLabel();
         Edad = new javax.swing.JLabel();
         SalarioBase = new javax.swing.JLabel();
         SalarioBase1 = new javax.swing.JLabel();
-        inputSalarioBaseTrabajador1 = new javax.swing.JTextField();
-        jPanel1 = new javax.swing.JPanel();
+        inputCorreoPaciente = new javax.swing.JTextField();
+        btnAgregarPaciente = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -88,22 +99,28 @@ public class AgregarPaciente extends javax.swing.JDialog
 
         SalarioBase1.setText("CORREO");
 
+        btnAgregarPaciente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAgregarPacienteMouseClicked(evt);
+            }
+        });
+
         jLabel2.setBackground(new java.awt.Color(204, 204, 204));
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/autonoma/hospital/images/Paciente50.png"))); // NOI18N
-        jLabel2.setText("CONFIRMAR");
+        jLabel2.setText("GUARDAR");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout btnAgregarPacienteLayout = new javax.swing.GroupLayout(btnAgregarPaciente);
+        btnAgregarPaciente.setLayout(btnAgregarPacienteLayout);
+        btnAgregarPacienteLayout.setHorizontalGroup(
+            btnAgregarPacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnAgregarPacienteLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        btnAgregarPacienteLayout.setVerticalGroup(
+            btnAgregarPacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnAgregarPacienteLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addContainerGap())
@@ -124,17 +141,17 @@ public class AgregarPaciente extends javax.swing.JDialog
                         .addGroup(fondoAgregarPacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(fondoAgregarPacienteLayout.createSequentialGroup()
                                 .addGap(48, 48, 48)
-                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnAgregarPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnVolverAddPaciente))
                             .addGroup(fondoAgregarPacienteLayout.createSequentialGroup()
                                 .addComponent(SalarioBase)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(inputSalarioBaseTrabajador, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(inputEdadPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(fondoAgregarPacienteLayout.createSequentialGroup()
                                 .addComponent(SalarioBase1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
-                                .addComponent(inputSalarioBaseTrabajador1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(inputCorreoPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(33, 33, 33))))
             .addGroup(fondoAgregarPacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(fondoAgregarPacienteLayout.createSequentialGroup()
@@ -144,9 +161,9 @@ public class AgregarPaciente extends javax.swing.JDialog
                         .addComponent(Nombre))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(fondoAgregarPacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(inputNombreTrabajador, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(inputNumeroDocumentoTrabajador, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(inputEdadTrabajador, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(inputNombrePaciente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(inputNumeroDocumentoPaciente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(inputTelefonoPaciente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(33, 33, 33)))
         );
         fondoAgregarPacienteLayout.setVerticalGroup(
@@ -157,32 +174,32 @@ public class AgregarPaciente extends javax.swing.JDialog
                 .addComponent(Edad)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(fondoAgregarPacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(inputSalarioBaseTrabajador, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(inputEdadPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SalarioBase))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(fondoAgregarPacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(SalarioBase1)
-                    .addComponent(inputSalarioBaseTrabajador1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(inputCorreoPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(fondoAgregarPacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(fondoAgregarPacienteLayout.createSequentialGroup()
                         .addGap(47, 47, 47)
                         .addComponent(btnVolverAddPaciente))
                     .addGroup(fondoAgregarPacienteLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnAgregarPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(15, Short.MAX_VALUE))
             .addGroup(fondoAgregarPacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(fondoAgregarPacienteLayout.createSequentialGroup()
                     .addGap(73, 73, 73)
                     .addGroup(fondoAgregarPacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(inputNombreTrabajador, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(inputNombrePaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(Nombre))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addGroup(fondoAgregarPacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(inputNumeroDocumentoTrabajador, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(inputNumeroDocumentoPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(NumeroDocumento))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(inputEdadTrabajador, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(inputTelefonoPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(113, Short.MAX_VALUE)))
         );
 
@@ -204,22 +221,52 @@ public class AgregarPaciente extends javax.swing.JDialog
         this.dispose();
     }//GEN-LAST:event_btnVolverAddPacienteMouseClicked
 
+    
+    private void btnAgregarPacienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarPacienteMouseClicked
+        String nombre = this.inputNombrePaciente.getText();
+        try
+        {
+            String numeroDocumentoPaciente =this.inputNumeroDocumentoPaciente.getText();
+            String telefonoPaciente = this.inputTelefonoPaciente.getText();
+            String edadPaciente = this.inputEdadPaciente.getText();
+            String correoPaciente = this.inputCorreoPaciente.getText();
+            
+            Paciente paciente = new Paciente(nombre, numeroDocumentoPaciente, telefonoPaciente, Integer.parseInt(edadPaciente), correoPaciente);
+            if(this.hospital.agregarPaciente(paciente))
+            {
+                JOptionPane.showMessageDialog(this, "El paciente "+nombre+" ha sido agregado exitosamente");
+                this.dispose();
+            }else{
+                JOptionPane.showMessageDialog(this, "Ha ocurrido un error");
+                this.dispose();
+            }
+            pacientes= hospital.obtenerListaPacientes();
+            
+        } catch (NumberFormatException e){
+            JOptionPane.showMessageDialog(this, "Por favor ingrese un número en el campo precio");
+            this.inputNumeroDocumentoPaciente.setText("");
+            this.inputTelefonoPaciente.setText("");
+            this.inputEdadPaciente.setText("");
+            this.inputCorreoPaciente.setText("");
+        }
+    }//GEN-LAST:event_btnAgregarPacienteMouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Edad;
     private javax.swing.JLabel Nombre;
     private javax.swing.JLabel NumeroDocumento;
     private javax.swing.JLabel SalarioBase;
     private javax.swing.JLabel SalarioBase1;
+    private javax.swing.JPanel btnAgregarPaciente;
     private javax.swing.JButton btnVolverAddPaciente;
     private javax.swing.JPanel fondoAgregarPaciente;
     private javax.swing.JPanel fondoTituloAgregarPaciente;
-    private javax.swing.JTextField inputEdadTrabajador;
-    private javax.swing.JTextField inputNombreTrabajador;
-    private javax.swing.JTextField inputNumeroDocumentoTrabajador;
-    private javax.swing.JTextField inputSalarioBaseTrabajador;
-    private javax.swing.JTextField inputSalarioBaseTrabajador1;
+    private javax.swing.JTextField inputCorreoPaciente;
+    private javax.swing.JTextField inputEdadPaciente;
+    private javax.swing.JTextField inputNombrePaciente;
+    private javax.swing.JTextField inputNumeroDocumentoPaciente;
+    private javax.swing.JTextField inputTelefonoPaciente;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

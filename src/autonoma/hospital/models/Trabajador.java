@@ -1,5 +1,6 @@
 package autonoma.hospital.models;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -35,7 +36,6 @@ public abstract class Trabajador
     /**
      * Hospital al que trabajan los empleados
      */
-    private Hospital hospital;
     /**
      * Variable que guardará el salario total calculado del trabajador
      */
@@ -43,13 +43,12 @@ public abstract class Trabajador
 
     public Trabajador(){}
 
-    public Trabajador(String nombre, String numeroDocumento, String edad, Integer salarioBase, Hospital hospital, Double salarioTotal)
+    public Trabajador(String nombre, String numeroDocumento, String edad, Integer salarioBase, Double salarioTotal)
     {
         this.nombre = nombre;
         this.numeroDocumento = numeroDocumento;
         this.edad = edad;
         this.salarioBase = salarioBase;
-        this.hospital = hospital;
         this.salarioTotal = salarioTotal;
     }
     
@@ -89,15 +88,7 @@ public abstract class Trabajador
         return salarioBase;
     }
 
-    public Hospital getHospital()
-    {
-        return hospital;
-    }
-
-    public void setHospital(Hospital hospital)
-    {
-        this.hospital = hospital;
-    }
+   
     
     public void setSalarioBase(Integer salarioBase)
     {
@@ -120,7 +111,7 @@ public abstract class Trabajador
      * @param hospital
      * @return 
      */
-    public static ArrayList<Trabajador> crearTrabajadorDeDocumento(Hospital hospital)
+    public static ArrayList<Trabajador> crearTrabajadorDeDocumento()
     {
         File fichero = new File("C:\\Users\\User\\OneDrive\\Documentos\\NetBeansProjects\\Hospital\\src\\autonoma\\hospital\\files\\Trabajadores.txt");
         Scanner scanner = null;
@@ -137,14 +128,14 @@ public abstract class Trabajador
                 
                 if(partes[4].equals("Operativo"))
                 {
-                    Trabajador trabajador = new TrabajadorOperativo(partes[0], partes[1] , partes[2], Integer.parseInt(partes[3]), partes[5], hospital, salarioTotal);
+                    Trabajador trabajador = new TrabajadorOperativo(partes[0], partes[1] , partes[2], Integer.parseInt(partes[3]), partes[5], salarioTotal);
                     trabajadores.add(trabajador);
                     if(partes.length == 6)
                     {
                         linea += ";" + trabajador.getSalarioTotal();
                     }
                 }else{
-                    Trabajador trabajador = new TrabajadorSalud(partes[0], partes[1] , partes[2], Integer.parseInt(partes[3]), partes[5], Integer.parseInt(partes[6]), hospital, salarioTotal);
+                    Trabajador trabajador = new TrabajadorSalud(partes[0], partes[1] , partes[2], Integer.parseInt(partes[3]), partes[5], Integer.parseInt(partes[6]), salarioTotal);
                     trabajadores.add(trabajador);
                     if(partes.length == 7)
                     {
@@ -183,14 +174,29 @@ public abstract class Trabajador
         return null;
     }
     
-    public static void guardarTrabajador(Trabajador trabajador, Integer tipo) throws IOException
+    public static void guardarTrabajadorSalud(TrabajadorSalud trabajador, String tipo) throws IOException
     {
-        File fichero = new File("C:\\Users\\User\\OneDrive\\Documentos\\NetBeansProjects\\Hospital\\src\\autonoma\\hospital\\files\\Trabajadores.txt");
-        FileWriter writer = new FileWriter(fichero,false);
-        PrintWriter pw = new PrintWriter(writer);
-        
-        pw.println(trabajador.getNombre()+";"+trabajador.getNumeroDocumento()+";"+ trabajador.getEdad()+";"+ trabajador.getSalarioBase()+";"+ tipo);
-        pw.close();
+        File rutaArchivo = new File("C:\\Users\\User\\OneDrive\\Documentos\\NetBeansProjects\\Hospital\\src\\autonoma\\hospital\\files\\Trabajadores.txt");
+        String lineaNueva= (trabajador.getNombre()+";"+trabajador.getNumeroDocumento()+";"+ trabajador.getEdad()+";"+ trabajador.getSalarioBase()+";"+ tipo + ";" +trabajador.getEspecialidad()+ ";"+ trabajador.getNumeroHorasTrabajadas()+";"+trabajador.getSalarioTotal());
+       
+        try {
+            // Instanciar FileWriter con el modo de agregar al final del archivo
+            FileWriter fw = new FileWriter(rutaArchivo, true);
+            // Instanciar BufferedWriter para escribir en el archivo
+            BufferedWriter bw = new BufferedWriter(fw);
+
+            // Escribir el texto en el archivo
+            bw.write(lineaNueva);
+            // Agregar un salto de línea
+            bw.newLine();
+
+            // Cerrar el BufferedWriter
+            bw.close();
+
+            System.out.println("Línea agregada correctamente al archivo.");
+        } catch (IOException e) {
+            System.err.println("Error al escribir en el archivo: " + e.getMessage());
+        }
     }
 
     public abstract void calcularSalarioTotal();
@@ -207,6 +213,31 @@ public abstract class Trabajador
             escritor.close();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+    
+    public static void guardarTrabajadorOperativo(TrabajadorOperativo trabajador, String tipo) throws IOException
+    {
+        File rutaArchivo = new File("C:\\Users\\User\\OneDrive\\Documentos\\NetBeansProjects\\Hospital\\src\\autonoma\\hospital\\files\\Trabajadores.txt");
+        String lineaNueva= (trabajador.getNombre()+";"+trabajador.getNumeroDocumento()+";"+ trabajador.getEdad()+";"+ trabajador.getSalarioBase()+";"+ tipo + ";" + trabajador.getSalarioTotal());
+       
+        try {
+            // Instanciar FileWriter con el modo de agregar al final del archivo
+            FileWriter fw = new FileWriter(rutaArchivo, true);
+            // Instanciar BufferedWriter para escribir en el archivo
+            BufferedWriter bw = new BufferedWriter(fw);
+
+            // Escribir el texto en el archivo
+            bw.write(lineaNueva);
+            // Agregar un salto de línea
+            bw.newLine();
+
+            // Cerrar el BufferedWriter
+            bw.close();
+
+            System.out.println("Línea agregada correctamente al archivo.");
+        } catch (IOException e) {
+            System.err.println("Error al escribir en el archivo: " + e.getMessage());
         }
     }
 }

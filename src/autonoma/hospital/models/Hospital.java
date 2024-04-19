@@ -2,6 +2,8 @@ package autonoma.hospital.models;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -56,18 +58,20 @@ public class Hospital
      * Lista de empleados del hospital
      */
     private ArrayList<Trabajador> trabajadores;
-    
     /**
      * Lista de pacientes del hospital
      */
     private ArrayList<Paciente> pacientes;
     
+    private Paciente pacienteModel = new Paciente();
+    
+    private Trabajador trabajadorSaludModel = new TrabajadorSalud();
+    
     //////Constructor////////////////
-    public Hospital()
-    {
-    }
+    public Hospital(){}
 
-    public Hospital(String nombre, String direccion, String telefono, String logo, Integer presupuesto, Integer fechaFundacion, String estado, Coordenada localizacion, Gerente gerente, Inventario inventario, ArrayList<Trabajador> trabajadores, ArrayList<Paciente> pacientes) {
+    public Hospital(String nombre, String direccion, String telefono, String logo, Integer presupuesto, Integer fechaFundacion, String estado, Coordenada localizacion, Gerente gerente, Inventario inventario, ArrayList<Trabajador> trabajadores, ArrayList<Paciente> pacientes)
+    {
         this.nombre = nombre;
         this.direccion = direccion;
         this.telefono = telefono;
@@ -81,11 +85,10 @@ public class Hospital
         this.trabajadores = trabajadores;
         this.pacientes = pacientes;
     }
-
     
-
     /////////////////Metodos De Acceso/////////
-    public String getNombre() {
+    public String getNombre()
+    {
         return nombre;
     }
 
@@ -174,11 +177,13 @@ public class Hospital
         this.gerente = gerente;
     }
 
-    public Inventario getInventario() {
+    public Inventario getInventario()
+    {
         return inventario;
     }
 
-    public void setInventario(Inventario inventario) {
+    public void setInventario(Inventario inventario)
+    {
         this.inventario = inventario;
     }
     
@@ -192,16 +197,17 @@ public class Hospital
         this.trabajadores = trabajadores;
     }
 
-    public ArrayList<Paciente> getPacientes() {
+    public ArrayList<Paciente> getPacientes()
+    {
         return pacientes;
     }
 
-    public void setPacientes(ArrayList<Paciente> pacientes) {
+    public void setPacientes(ArrayList<Paciente> pacientes)
+    {
         this.pacientes = pacientes;
     }
     
      /// Metodos
-    
     public void registrarPatrocinio()
     {
         
@@ -209,9 +215,11 @@ public class Hospital
     
     public static Hospital creaGerenteDeDocumento()
     {
-        File fichero = new File("C:\\Users\\User\\OneDrive\\Documentos\\NetBeansProjects\\Hospital\\src\\autonoma\\hospital\\files\\Medicamentos.txt");
+        File fichero = new File("C:\\Users\\User\\OneDrive\\Documentos\\NetBeansProjects\\Hospital\\src\\autonoma\\hospital\\files\\Informacion.txt");
         Scanner scanner = null;
         Hospital hospitalNuevo= new Hospital();
+        Coordenada coordenadas = new Coordenada(0);
+        Gerente gerente = new Gerente();
         
         try 
         {
@@ -225,48 +233,52 @@ public class Hospital
                 {
                     String clave = partes[0];
                     String valor = linea.substring(clave.length() + 1);
-
+                    
                     switch (clave)
                     {
                         case "Nombre":
-                            hospitalNuevo.setNombre(valor);
+                            hospitalNuevo.setNombre(valor.trim());
                             System.out.println("Entré");
                             break;
                         case "Direccion":
-                            hospitalNuevo.setDireccion(valor);
+                            hospitalNuevo.setDireccion(valor.trim());
                             break;
                         case "Telefono":
-                            hospitalNuevo.setTelefono(valor);
+                            hospitalNuevo.setTelefono(valor.trim());
                             break;
                         case "Logo":
-                            hospitalNuevo.setLogo(valor);
+                            hospitalNuevo.setLogo(valor.trim());
                             break;
                         case "Presupuesto":
-                            hospitalNuevo.setPresupuesto(0);
+                            hospitalNuevo.setPresupuesto(Integer.parseInt(valor.trim()));
                             break;
                         case "Fecha de fundacion":
-                            hospitalNuevo.setFechaFundacion(0);
+                            hospitalNuevo.setFechaFundacion(Integer.parseInt(valor.trim()));
                             break;
                         case "Estado":
-                            hospitalNuevo.setEstado(valor);
+                            hospitalNuevo.setEstado(valor.trim());
                             break;
-                        case "Localizacion":
-                            String[] coordenadas = valor.split(";");
-                            double latitud = Double.parseDouble(coordenadas[0]);
-                            double longitud = Double.parseDouble(coordenadas[1]);
-                            hospitalNuevo.getLocalizacion().setLatitud(latitud);
+                        case "Latitud":                            
+                            double latitud = Double.parseDouble(valor.trim());
+                            coordenadas.setLatitud(latitud);
+                            break;
+                        case "Longitud":
+                            double longitud = Double.parseDouble(valor.trim());
+                            coordenadas.setLongitud(longitud);
+                            hospitalNuevo.setLocalizacion(coordenadas);
                             break;
                         case "Nombre gerente":
-                            hospitalNuevo.gerente.getNombreGerente();
+                            gerente.setNombreGerente(valor.trim());
                             break;
                         case "Numero de documento gerente":
-                            hospitalNuevo.gerente.getNumeroIdentificacion();
+                            gerente.setNumeroIdentificacion(valor.trim());
                             break;
                         case "Edad gerente":
-                            hospitalNuevo.gerente.getEdad();
+                            gerente.setEdad(Integer.parseInt(valor.trim()));
                             break;
                         case "Carrera gerente":
-                            hospitalNuevo.gerente.getCarrera();
+                            gerente.setCarrera(valor.trim());
+                            hospitalNuevo.setGerente(gerente);
                             break;
                         default:
                             // Ignorar líneas que no corresponden a datos del hospital
@@ -301,6 +313,248 @@ public class Hospital
     public Boolean cambiarEstado(Boolean estado)
     {
         return false;
+    }
+    
+    /**
+     * Agrega un nuevo medicamento al inventario.
+     * @param paciente La instancia de tipo Paciente que se agregará al hospital.
+     * @return verdadero si el medicamento se agrega exitosamente y falso si no.
+     */
+    public boolean agregarPaciente(Paciente paciente)
+    { 
+        
+        pacienteModel.actualizarArchivoPaciente(paciente);
+        return this.pacientes.add(paciente);
+        
+    }
+    
+    /**
+     * Busca un medicamento en el inventario basándose en un objeto Medicamento.
+     * @param paciente La instancia de tipo Paciente que se desea buscar en el inventario
+     * @return el objeto Medicamento encontrado si existe en el inventario, null si no se encuentra.
+     */
+    public Paciente buscarPaciente(Paciente paciente)
+    {    
+        for(int i=0;i<this.pacientes.size();i++)
+        {
+            Paciente p = this.pacientes.get(i);
+            if(p.equals(paciente))
+            {
+                return p;
+            }
+        }
+        return null;
+    }
+    
+    /**
+     * Busca un producto en el inventario basándose en su nombre.
+     * @param pacientes Conjunto de objetos de tipo Paciente.
+     * @param nombre Nombre del paciente que se desea buscar en el hospital.
+     * @return El objeto Producto encontrado si existe en el inventario, null si no se encuentra.
+     */
+    public static Paciente buscarPaciente(ArrayList<Paciente> pacientes, String nombre)
+    {
+        for (Paciente paciente : pacientes)
+        {
+            if(paciente.getNombre().equals(nombre))
+            {
+                return paciente;
+            }
+        }
+        return null;
+    }
+    /*
+    public Medicamento buscarMedicamento(String nombre)
+    {    
+        for(int i=0;i<this.medicamentos.size();i++)
+        {
+            Medicamento p = this.medicamentos.get(i);
+            if(p.getNombre().equals(nombre))
+            {
+                return p;
+            }
+        }
+        return null;   
+    }
+    */
+    /**
+     * Actualiza un paciente en el hospital basándose en un objeto Paciente.
+     * @param paciente Nueva instancia de tipo Paciente que reemplazará al paciente ya existente
+     * @return El objeto Paciente actualizado si se encuentra y actualiza correctamente, null si no se encuentra.
+     */
+    public Paciente actualizarPaciente(Paciente paciente)
+    {    
+        for(int i = 0; i < this.pacientes.size(); i++)
+        {
+            Paciente p = this.pacientes.get(i);
+            if(p.equals(paciente))
+            {
+                return p;
+            }
+        }
+    return null;   
+    }
+
+    /**
+     * Elimina un producto del inventario basándose en su ID.
+     * @param paciente La instancia de tipo Paciente que será eliminada de la lista de las mismas
+     * @return El objeto Producto eliminado si se encuentra y se elimina correctamente, null si no se encuentra.
+     */
+    public Paciente eliminarPaciente(Paciente paciente)
+    {    
+        Paciente eliminar = this.buscarPaciente(paciente);
+        if (eliminar != null)
+        {
+            boolean eliminado = this.pacientes.remove(eliminar);
+            if (eliminado)
+            {
+                return eliminar;
+            } else {
+                // Si el medicamento no fue eliminado correctamente de la lista, 
+                // podría ser útil lanzar una excepción u otro manejo de error.
+                // Aquí devolvemos null como indicación de que no se pudo eliminar.
+                return null;
+            }
+        } else {
+            // Si el medicamento no se encontró en la lista, devolvemos null.
+            return null;
+        }
+    }
+    
+    /**
+     * Agrega un nuevo medicamento al inventario.
+     * @param trabajador La instancia de tipo Trabajador que se agregará al hospital.
+     * @param tipo
+     * @return verdadero si el medicamento se agrega exitosamente y falso si no.
+     * @throws java.io.IOException
+     */
+    public boolean agregarTrabajadorSalud(TrabajadorSalud trabajador, String tipo) throws IOException
+    { 
+        trabajadorSaludModel.guardarTrabajadorSalud(trabajador, tipo);
+        return this.trabajadores.add(trabajador);
+    }
+    
+     public boolean agregarTrabajadorOperativo(TrabajadorOperativo trabajador, String tipo) throws IOException
+    { 
+        trabajadorSaludModel.guardarTrabajadorOperativo(trabajador, tipo);
+        return this.trabajadores.add(trabajador);
+    }
+    
+    /**
+     * Busca un medicamento en el inventario basándose en un objeto Medicamento.
+     * @param trabajador La instancia de tipo Trabajador que se desea buscar en el hospital
+     * @return el objeto Medicamento encontrado si existe en el inventario, null si no se encuentra.
+     */
+    public Trabajador buscarTrabajador(Trabajador trabajador)
+    {    
+        for(int i=0;i<this.trabajadores.size();i++)
+        {
+            Trabajador t = this.trabajadores.get(i);
+            if(t.equals(trabajador))
+            {
+                return t;
+            }
+        }
+        return null;
+    }
+    
+    /**
+     * Busca un producto en el inventario basándose en su nombre.
+     * @param trabajadores Conjunto de objetos de tipo Trabajador
+     * @param nombre Nombre del paciente que se desea buscar en el hospital.
+     * @return El objeto Producto encontrado si existe en el inventario, null si no se encuentra.
+     */
+    public static Trabajador buscarTrabajador(ArrayList<Trabajador> trabajadores, String nombre)
+    {
+        for (Trabajador trabajador : trabajadores)
+        {
+            if(trabajador.getNombre().equals(nombre))
+            {
+                return trabajador;
+            }
+        }
+        return null;
+    }
+    /*
+    public Medicamento buscarMedicamento(String nombre)
+    {    
+        for(int i=0;i<this.medicamentos.size();i++)
+        {
+            Medicamento p = this.medicamentos.get(i);
+            if(p.getNombre().equals(nombre))
+            {
+                return p;
+            }
+        }
+        return null;   
+    }
+    */
+    /**
+     * Actualiza un medicamento en el inventario basándose en un objeto Medicamento.
+     * @param trabajador Nueva instancia de tipo Trabajador que reemplazará al trabajador ya existente.
+     * @return El objeto Producto actualizado si se encuentra y actualiza correctamente, null si no se encuentra.
+     */
+    public Trabajador actualizarTrabajador(Trabajador trabajador)
+    {    
+        for(int i = 0; i < this.trabajadores.size(); i++)
+        {
+            Trabajador t = this.trabajadores.get(i);
+            if(t.equals(trabajador))
+            {
+                return t;
+            }
+        }
+    return null;   
+    }
+
+    /**
+     * Elimina un producto del inventario basándose en su ID.
+     * @param trabajador La instancia de tipo Trabajador que será eliminada de la lista de trabajadores
+     * @return El objeto Producto eliminado si se encuentra y se elimina correctamente, null si no se encuentra.
+     */
+    public Trabajador eliminarTrabajador(Trabajador trabajador)
+    {    
+        Trabajador eliminar = this.buscarTrabajador(trabajador);
+        if (eliminar != null)
+        {
+            boolean eliminado = this.trabajadores.remove(eliminar);
+            if (eliminado)
+            {
+                return eliminar;
+            } else {
+                // Si el medicamento no fue eliminado correctamente de la lista, 
+                // podría ser útil lanzar una excepción u otro manejo de error.
+                // Aquí devolvemos null como indicación de que no se pudo eliminar.
+                return null;
+            }
+        } else {
+            // Si el medicamento no se encontró en la lista, devolvemos null.
+            return null;
+        }
+    }
+    
+    public  void actualizarHospitalArchivo(ArrayList<String> lineas)
+    {
+        String rutaArchivo="C:\\Users\\User\\OneDrive\\Documentos\\NetBeansProjects\\Hospital\\src\\autonoma\\hospital\\files\\Informacion.txt";
+        try
+        {
+            FileWriter escritor = new FileWriter(rutaArchivo);
+            for (String linea : lineas)
+            {
+                escritor.write(linea + "\n");
+            }
+            escritor.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public ArrayList<Paciente> obtenerListaPacientes(){
+        return this.pacientes;
+    }
+    
+    public ArrayList<Trabajador> obtenerListaTrabajadores(){
+        return this.trabajadores;
     }
     
 }

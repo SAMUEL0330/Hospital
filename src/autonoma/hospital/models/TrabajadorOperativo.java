@@ -24,9 +24,9 @@ public class TrabajadorOperativo extends Trabajador
      * @param hospital en el que trabaja el empleado
      * @param salarioTotal del trabajador
      */
-    public TrabajadorOperativo(String nombre, String numeroDeIdentificacion, String edad, Integer salarioBase, String areaTrabajo, Hospital hospital, Double salarioTotal)
+    public TrabajadorOperativo(String nombre, String numeroDeIdentificacion, String edad, Integer salarioBase, String areaTrabajo, Double salarioTotal)
     {
-        super(nombre, numeroDeIdentificacion, edad, salarioBase, hospital, salarioTotal);
+        super(nombre, numeroDeIdentificacion, edad, salarioBase, salarioTotal);
         this.areaTrabajo = areaTrabajo;
         calcularSalarioTotal();
     }
@@ -46,6 +46,7 @@ public class TrabajadorOperativo extends Trabajador
     /**
      * Método heredado que permite calcular el salario del empleado operativo 
      */
+    @Override
     public void calcularSalarioTotal()
     {
         Double base = salarioBase * 0.2;

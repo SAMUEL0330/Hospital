@@ -46,7 +46,7 @@
               <Component id="fondoTituloAgregarTrabajador" alignment="0" max="32767" attributes="0"/>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
-                  <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnConfirmarAgregarTrabajadorSalud" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
                   <Component id="btnVolverAddTrabajador" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
@@ -64,17 +64,17 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace pref="17" max="32767" attributes="0"/>
-                          <Component id="inputNombreTrabajador" min="-2" pref="280" max="-2" attributes="0"/>
+                          <Component id="inputNombreTrabajadorSalud" min="-2" pref="280" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="inputEdadTrabajador" min="-2" pref="280" max="-2" attributes="0"/>
-                              <Component id="inputNumeroDocumentoTrabajador" min="-2" pref="280" max="-2" attributes="0"/>
-                              <Component id="inputSalarioBaseTrabajador" alignment="1" min="-2" pref="280" max="-2" attributes="0"/>
-                              <Component id="inputSalarioBaseTrabajador1" alignment="1" min="-2" pref="280" max="-2" attributes="0"/>
-                              <Component id="inputSalarioBaseTrabajador2" alignment="1" min="-2" pref="280" max="-2" attributes="0"/>
+                              <Component id="inputEdadTrabajadorSalud" min="-2" pref="280" max="-2" attributes="0"/>
+                              <Component id="inputNumeroDocumentoTrabajadorSalud" min="-2" pref="280" max="-2" attributes="0"/>
+                              <Component id="inputSalarioBaseTrabajadorSalud" alignment="1" min="-2" pref="280" max="-2" attributes="0"/>
+                              <Component id="inputEspecialidadTrabajadorSalud" alignment="1" min="-2" pref="280" max="-2" attributes="0"/>
+                              <Component id="inputHorasTrabajadorSalud" alignment="1" min="-2" pref="280" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
@@ -88,32 +88,32 @@
                   <Component id="fondoTituloAgregarTrabajador" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="inputNombreTrabajador" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                      <Component id="inputNombreTrabajadorSalud" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                       <Component id="Nombre" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="inputNumeroDocumentoTrabajador" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                      <Component id="inputNumeroDocumentoTrabajadorSalud" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                       <Component id="NumeroDocumento" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="inputEdadTrabajador" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                      <Component id="inputEdadTrabajadorSalud" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                       <Component id="Edad" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="inputSalarioBaseTrabajador" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                      <Component id="inputSalarioBaseTrabajadorSalud" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                       <Component id="SalarioBase" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="inputSalarioBaseTrabajador1" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                      <Component id="inputEspecialidadTrabajadorSalud" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                       <Component id="SalarioBase1" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="inputSalarioBaseTrabajador2" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                      <Component id="inputHorasTrabajadorSalud" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                       <Component id="SalarioBase2" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="22" max="32767" attributes="0"/>
@@ -123,7 +123,7 @@
                           <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
-                          <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnConfirmarAgregarTrabajadorSalud" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -192,13 +192,13 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVolverAddTrabajadorActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="inputNumeroDocumentoTrabajador">
+        <Component class="javax.swing.JTextField" name="inputNumeroDocumentoTrabajadorSalud">
         </Component>
-        <Component class="javax.swing.JTextField" name="inputNombreTrabajador">
+        <Component class="javax.swing.JTextField" name="inputNombreTrabajadorSalud">
         </Component>
-        <Component class="javax.swing.JTextField" name="inputSalarioBaseTrabajador">
+        <Component class="javax.swing.JTextField" name="inputSalarioBaseTrabajadorSalud">
         </Component>
-        <Component class="javax.swing.JTextField" name="inputEdadTrabajador">
+        <Component class="javax.swing.JTextField" name="inputEdadTrabajadorSalud">
         </Component>
         <Component class="javax.swing.JLabel" name="Nombre">
           <Properties>
@@ -220,7 +220,10 @@
             <Property name="text" type="java.lang.String" value="SALARIO BASE"/>
           </Properties>
         </Component>
-        <Container class="javax.swing.JPanel" name="jPanel1">
+        <Container class="javax.swing.JPanel" name="btnConfirmarAgregarTrabajadorSalud">
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnConfirmarAgregarTrabajadorSaludMouseClicked"/>
+          </Events>
 
           <Layout>
             <DimensionLayout dim="0">
@@ -248,19 +251,19 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/autonoma/hospital/images/Empleado50.png"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="CONFIRMAR"/>
+                <Property name="text" type="java.lang.String" value="GUARDAR"/>
               </Properties>
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JTextField" name="inputSalarioBaseTrabajador1">
+        <Component class="javax.swing.JTextField" name="inputEspecialidadTrabajadorSalud">
         </Component>
         <Component class="javax.swing.JLabel" name="SalarioBase1">
           <Properties>
             <Property name="text" type="java.lang.String" value="ESPECIALIDAD"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="inputSalarioBaseTrabajador2">
+        <Component class="javax.swing.JTextField" name="inputHorasTrabajadorSalud">
         </Component>
         <Component class="javax.swing.JLabel" name="SalarioBase2">
           <Properties>

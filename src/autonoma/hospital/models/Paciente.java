@@ -1,7 +1,10 @@
 package autonoma.hospital.models;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 /**
@@ -64,8 +67,17 @@ public class Paciente
         this.estado = estado;
     }
 
-    public Paciente(){
+    public Paciente(){}
+
+    public Paciente(String nombre, String numeroDocumento, String telefono, Integer edad, String correo)
+    {
+        this.nombre = nombre;
+        this.numeroDocumento = numeroDocumento;
+        this.telefono = telefono;
+        this.edad = edad;
+        this.correo = correo;
     }
+    
     public String getNombre()    
     {
         return nombre;
@@ -161,8 +173,11 @@ public class Paciente
                         padecimientosLeidos.add(p);
                     }
                 }
+                pacienteNuevo.setEstado("0".equals(partes[6]) ? "Salud" : "Critico");
                 pacienteNuevo.setEnfermedades(padecimientosLeidos);
                 pacientes.add(pacienteNuevo);
+                
+                
 
             }
             return pacientes;
@@ -178,5 +193,32 @@ public class Paciente
             }
         }
         return null;
+    }
+    
+    
+    public  void actualizarArchivoPaciente(Paciente paciente){
+        String rutaArchivo = "C:\\Users\\User\\OneDrive\\Documentos\\NetBeansProjects\\Hospital\\src\\autonoma\\hospital\\files\\Pacientes.txt";
+        // Texto a agregar
+        String lineaNueva = paciente.getNombre() + ";" + paciente.getNumeroDocumento() + ";" + paciente.getTelefono() + ";" + paciente.getEdad() + ";" +  paciente.getCorreo()+ ";" + "Padecimiento: N/A" + ";"+ "0";
+        
+         try {
+            // Instanciar FileWriter con el modo de agregar al final del archivo
+            FileWriter fw = new FileWriter(rutaArchivo, true);
+            // Instanciar BufferedWriter para escribir en el archivo
+            BufferedWriter bw = new BufferedWriter(fw);
+
+            // Escribir el texto en el archivo
+            bw.write(lineaNueva);
+            // Agregar un salto de línea
+            bw.newLine();
+
+            // Cerrar el BufferedWriter
+            bw.close();
+
+            System.out.println("Línea agregada correctamente al archivo.");
+        } catch (IOException e) {
+            System.err.println("Error al escribir en el archivo: " + e.getMessage());
+        }
+
     }
 }

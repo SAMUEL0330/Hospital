@@ -1,6 +1,11 @@
 package autonoma.hospital.views;
 
 import autonoma.hospital.models.Hospital;
+import autonoma.hospital.models.Trabajador;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 /**
  * 
@@ -12,12 +17,16 @@ public class GestionEmpleados extends javax.swing.JDialog
 {
     private Hospital hospital;
     private VentanaPrincipal ventanaPricipal;
-    public GestionEmpleados(java.awt.Frame parent, boolean modal,Hospital hospital, VentanaPrincipal ventanaPrincipal)
+    ArrayList<Trabajador> trabajadores;
+    public GestionEmpleados(java.awt.Frame parent, boolean modal,Hospital hospital, VentanaPrincipal ventanaPrincipal, ArrayList<Trabajador> trabajadores)
     {
         super(parent, modal);
         initComponents();
         this.hospital=hospital;
         this.ventanaPricipal=ventanaPrincipal;
+        this.trabajadores=hospital.obtenerListaTrabajadores();
+        
+        this.llenarTabla();
     }
 
     /**
@@ -31,13 +40,14 @@ public class GestionEmpleados extends javax.swing.JDialog
 
         jPanel1 = new javax.swing.JPanel();
         fondoGestionEmpleados = new javax.swing.JPanel();
-        tablaEmpleados = new javax.swing.JTable();
-        btnAgregarEmpleado = new javax.swing.JButton();
-        btnActualizarEmpleado = new javax.swing.JButton();
-        btnEliminarEmpleado = new javax.swing.JButton();
+        tablaTrabajadores = new javax.swing.JTable();
+        btnEliminarTrabajador = new javax.swing.JButton();
         fondoTituloTrabajadores = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnVolverTrabajadores = new javax.swing.JButton();
+        btnActualizarTrabajador = new javax.swing.JButton();
+        btnAgregarTrabajadorSalud = new javax.swing.JButton();
+        btnAgregarTrabajadorOperativo = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -54,7 +64,7 @@ public class GestionEmpleados extends javax.swing.JDialog
 
         fondoGestionEmpleados.setBackground(new java.awt.Color(204, 204, 204));
 
-        tablaEmpleados.setModel(new javax.swing.table.DefaultTableModel(
+        tablaTrabajadores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -80,16 +90,13 @@ public class GestionEmpleados extends javax.swing.JDialog
                 return canEdit [columnIndex];
             }
         });
-        tablaEmpleados.getTableHeader().setReorderingAllowed(false);
+        tablaTrabajadores.getTableHeader().setReorderingAllowed(false);
 
-        btnAgregarEmpleado.setText("Agregar");
-
-        btnActualizarEmpleado.setText("Actualizar");
-
-        btnEliminarEmpleado.setText("Eliminar");
-        btnEliminarEmpleado.addActionListener(new java.awt.event.ActionListener() {
+        btnEliminarTrabajador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/autonoma/hospital/images/Cancel.png"))); // NOI18N
+        btnEliminarTrabajador.setText("Eliminar");
+        btnEliminarTrabajador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarEmpleadoActionPerformed(evt);
+                btnEliminarTrabajadorActionPerformed(evt);
             }
         });
 
@@ -102,10 +109,10 @@ public class GestionEmpleados extends javax.swing.JDialog
         fondoTituloTrabajadores.setLayout(fondoTituloTrabajadoresLayout);
         fondoTituloTrabajadoresLayout.setHorizontalGroup(
             fondoTituloTrabajadoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(fondoTituloTrabajadoresLayout.createSequentialGroup()
-                .addGap(126, 126, 126)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoTituloTrabajadoresLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(99, 99, 99))
         );
         fondoTituloTrabajadoresLayout.setVerticalGroup(
             fondoTituloTrabajadoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -129,47 +136,82 @@ public class GestionEmpleados extends javax.swing.JDialog
             }
         });
 
+        btnActualizarTrabajador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/autonoma/hospital/images/editar16.png"))); // NOI18N
+        btnActualizarTrabajador.setText("Actualizar");
+        btnActualizarTrabajador.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnActualizarTrabajadorMouseClicked(evt);
+            }
+        });
+
+        btnAgregarTrabajadorSalud.setIcon(new javax.swing.ImageIcon(getClass().getResource("/autonoma/hospital/images/TrabajadorSalud16.png"))); // NOI18N
+        btnAgregarTrabajadorSalud.setText("Agregar");
+        btnAgregarTrabajadorSalud.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAgregarTrabajadorSaludMouseClicked(evt);
+            }
+        });
+        btnAgregarTrabajadorSalud.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarTrabajadorSaludActionPerformed(evt);
+            }
+        });
+
+        btnAgregarTrabajadorOperativo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/autonoma/hospital/images/TrabajadorOperativo16.png"))); // NOI18N
+        btnAgregarTrabajadorOperativo.setText("Agregar");
+        btnAgregarTrabajadorOperativo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAgregarTrabajadorOperativoMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout fondoGestionEmpleadosLayout = new javax.swing.GroupLayout(fondoGestionEmpleados);
         fondoGestionEmpleados.setLayout(fondoGestionEmpleadosLayout);
         fondoGestionEmpleadosLayout.setHorizontalGroup(
             fondoGestionEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(fondoTituloTrabajadores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(fondoGestionEmpleadosLayout.createSequentialGroup()
                 .addGroup(fondoGestionEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(fondoGestionEmpleadosLayout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(btnAgregarEmpleado)
+                        .addGap(21, 21, 21)
+                        .addGroup(fondoGestionEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnAgregarTrabajadorSalud, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnActualizarTrabajador))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnActualizarEmpleado)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnEliminarEmpleado)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                        .addGroup(fondoGestionEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnEliminarTrabajador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnAgregarTrabajadorOperativo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
                         .addComponent(btnVolverTrabajadores))
-                    .addGroup(fondoGestionEmpleadosLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(tablaEmpleados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap())
+                    .addGroup(fondoGestionEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(fondoTituloTrabajadores, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, fondoGestionEmpleadosLayout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(tablaTrabajadores, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         fondoGestionEmpleadosLayout.setVerticalGroup(
             fondoGestionEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(fondoGestionEmpleadosLayout.createSequentialGroup()
                 .addComponent(fondoTituloTrabajadores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tablaEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addComponent(tablaTrabajadores, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(fondoGestionEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAgregarEmpleado)
-                    .addComponent(btnActualizarEmpleado)
-                    .addComponent(btnEliminarEmpleado)
-                    .addComponent(btnVolverTrabajadores))
-                .addGap(15, 15, 15))
+                    .addComponent(btnAgregarTrabajadorSalud)
+                    .addComponent(btnAgregarTrabajadorOperativo))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addGroup(fondoGestionEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnVolverTrabajadores)
+                    .addComponent(btnActualizarTrabajador)
+                    .addComponent(btnEliminarTrabajador))
+                .addGap(20, 20, 20))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(fondoGestionEmpleados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(fondoGestionEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -179,9 +221,9 @@ public class GestionEmpleados extends javax.swing.JDialog
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnEliminarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarEmpleadoActionPerformed
+    private void btnEliminarTrabajadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarTrabajadorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnEliminarEmpleadoActionPerformed
+    }//GEN-LAST:event_btnEliminarTrabajadorActionPerformed
 
     private void btnVolverTrabajadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverTrabajadoresActionPerformed
         // TODO add your handling code here:
@@ -191,15 +233,68 @@ public class GestionEmpleados extends javax.swing.JDialog
         this.dispose();
     }//GEN-LAST:event_btnVolverTrabajadoresMouseClicked
 
+    private void btnAgregarTrabajadorSaludActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarTrabajadorSaludActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAgregarTrabajadorSaludActionPerformed
+
+    private void btnAgregarTrabajadorSaludMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarTrabajadorSaludMouseClicked
+        AgregarTrabajadorSalud vAgregarTrabajadorSalud = new AgregarTrabajadorSalud(ventanaPricipal, rootPaneCheckingEnabled, ventanaPricipal, hospital);
+        vAgregarTrabajadorSalud.setVisible(true);
+    }//GEN-LAST:event_btnAgregarTrabajadorSaludMouseClicked
+
+    private void btnAgregarTrabajadorOperativoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarTrabajadorOperativoMouseClicked
+        AgregarTrabajadorOperativo vAgregarTrabajadorOperativo = new AgregarTrabajadorOperativo(ventanaPricipal, rootPaneCheckingEnabled, hospital);
+        vAgregarTrabajadorOperativo.setVisible(true);
+    }//GEN-LAST:event_btnAgregarTrabajadorOperativoMouseClicked
+
+    private void btnActualizarTrabajadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarTrabajadorMouseClicked
+        int filaSeleccionada = tablaTrabajadores.getSelectedRow();
+    
+        if (filaSeleccionada != -1)
+        {
+            String tipoTrabajador = (String) tablaTrabajadores.getValueAt(filaSeleccionada, 2);
+            if ("Operativo".equals(tipoTrabajador))
+            {
+                ActualizarTrabajadorOperativo vActualizarTrabajadorOperativo = new ActualizarTrabajadorOperativo(ventanaPricipal, rootPaneCheckingEnabled);
+                vActualizarTrabajadorOperativo.setVisible(true);
+            } else if ("Salud".equals(tipoTrabajador)) {
+                ActualizarTrabajadorSalud vActualizarTrabajadorSalud = new ActualizarTrabajadorSalud(ventanaPricipal, rootPaneCheckingEnabled);
+                vActualizarTrabajadorSalud.setVisible(true);
+            } else {
+                System.out.println("Tipo de trabajador desconocido: " + tipoTrabajador);
+            }
+        } else {
+            System.out.println("No se ha seleccionado ningún trabajador.");
+        }
+    }//GEN-LAST:event_btnActualizarTrabajadorMouseClicked
+
+    public void llenarTabla()
+    {
+        DefaultTableModel modelDefault = new DefaultTableModel(new String[]{"Nombre","Documento","Edad","Salario Base", "Salario Total"}, this.trabajadores.size());
+        this.tablaTrabajadores.setModel(modelDefault);
+        
+        TableModel dataModel = tablaTrabajadores.getModel();
+        for (int i = 0; i < this.trabajadores.size(); i++)
+        {
+            Trabajador trabajador = this.trabajadores.get(i);
+            
+            dataModel.setValueAt(trabajador.getNombre(),i,0);
+            dataModel.setValueAt(trabajador.getNumeroDocumento(),i,1);
+            dataModel.setValueAt(trabajador.getEdad(),i,2);
+            dataModel.setValueAt(trabajador.getSalarioBase(),i,3);
+            dataModel.setValueAt(trabajador.getSalarioTotal(),i,4);
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnActualizarEmpleado;
-    private javax.swing.JButton btnAgregarEmpleado;
-    private javax.swing.JButton btnEliminarEmpleado;
+    private javax.swing.JButton btnActualizarTrabajador;
+    private javax.swing.JButton btnAgregarTrabajadorOperativo;
+    private javax.swing.JButton btnAgregarTrabajadorSalud;
+    private javax.swing.JButton btnEliminarTrabajador;
     private javax.swing.JButton btnVolverTrabajadores;
     private javax.swing.JPanel fondoGestionEmpleados;
     private javax.swing.JPanel fondoTituloTrabajadores;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTable tablaEmpleados;
+    private javax.swing.JTable tablaTrabajadores;
     // End of variables declaration//GEN-END:variables
 }

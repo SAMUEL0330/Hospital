@@ -1,5 +1,9 @@
 package autonoma.hospital.views;
 
+import autonoma.hospital.models.Hospital;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Samuel Esteban Herrera Bedoya & Alejandra Zapata Castañeda
@@ -8,13 +12,20 @@ package autonoma.hospital.views;
  */
 public class ConfirmarGerente extends javax.swing.JDialog
 {
+    
+    
+    private VentanaPrincipal ventanaPrincipal;
+    private Hospital hospital;
     /**
      * Creates new form AgregarMedicamento
      */
-    public ConfirmarGerente(java.awt.Frame parent, boolean modal)
+    public ConfirmarGerente(java.awt.Frame parent, boolean modal, Hospital hospital)
     {
         super(parent, modal);
         initComponents();
+        this.ventanaPrincipal= ventanaPrincipal;
+        this.hospital = hospital;
+        cargarInformacionHospital(hospital);
     }
 
     /**
@@ -26,20 +37,42 @@ public class ConfirmarGerente extends javax.swing.JDialog
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        inputSalarioBaseTrabajador3 = new javax.swing.JTextField();
+        SalarioBase3 = new javax.swing.JLabel();
         fondoAgregarMedicamento = new javax.swing.JPanel();
         fondoTituloAgregarMedicamento = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnVolverAddGerente = new javax.swing.JButton();
-        inputNumeroDocumentoTrabajador = new javax.swing.JTextField();
-        inputNombreGerente = new javax.swing.JTextField();
-        inputSalarioBaseTrabajador = new javax.swing.JTextField();
-        inputEdadTrabajador = new javax.swing.JTextField();
+        inputDireccion = new javax.swing.JTextField();
+        inputNombreHospital = new javax.swing.JTextField();
+        inputPresupuesto = new javax.swing.JTextField();
+        inputTelefono = new javax.swing.JTextField();
         Nombre = new javax.swing.JLabel();
         NumeroDocumento = new javax.swing.JLabel();
         Edad = new javax.swing.JLabel();
-        SalarioBase = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        btnActualizarInformacion = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+        inputLatitud = new javax.swing.JTextField();
+        inputFechaFundacion = new javax.swing.JTextField();
+        inputNombreGerente = new javax.swing.JTextField();
+        inputLongitud = new javax.swing.JTextField();
+        Nombre1 = new javax.swing.JLabel();
+        NumeroDocumento1 = new javax.swing.JLabel();
+        Edad1 = new javax.swing.JLabel();
+        SalarioBase1 = new javax.swing.JLabel();
+        inputNumeroDocumento = new javax.swing.JTextField();
+        SalarioBase2 = new javax.swing.JLabel();
+        inputEdad = new javax.swing.JTextField();
+        SalarioBase4 = new javax.swing.JLabel();
+        inputCarrera = new javax.swing.JTextField();
+        SalarioBase5 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        inputEstadoHospital = new javax.swing.JTextField();
+        SalarioBase6 = new javax.swing.JLabel();
+        Edad2 = new javax.swing.JLabel();
+
+        SalarioBase3.setText("NOMBRE");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -48,14 +81,14 @@ public class ConfirmarGerente extends javax.swing.JDialog
         fondoTituloAgregarMedicamento.setBackground(new java.awt.Color(0, 153, 255));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setText("REGISTRAR GERENTE");
+        jLabel1.setText("REGISTRAR INFORMACIÓN");
 
         javax.swing.GroupLayout fondoTituloAgregarMedicamentoLayout = new javax.swing.GroupLayout(fondoTituloAgregarMedicamento);
         fondoTituloAgregarMedicamento.setLayout(fondoTituloAgregarMedicamentoLayout);
         fondoTituloAgregarMedicamentoLayout.setHorizontalGroup(
             fondoTituloAgregarMedicamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(fondoTituloAgregarMedicamentoLayout.createSequentialGroup()
-                .addGap(158, 158, 158)
+                .addGap(326, 326, 326)
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -82,33 +115,68 @@ public class ConfirmarGerente extends javax.swing.JDialog
             }
         });
 
-        Nombre.setText("NOMBRE");
+        Nombre.setText("NOMBRE DEL HOSPITAL");
 
-        NumeroDocumento.setText("NUMERO IDENTIFICACION");
+        NumeroDocumento.setText("DIRECCION");
 
-        Edad.setText("EDAD");
+        Edad.setText("TELEFONO");
 
-        SalarioBase.setText("CARRERA");
+        btnActualizarInformacion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnActualizarInformacionMouseClicked(evt);
+            }
+        });
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/autonoma/hospital/images/Gerente50.png"))); // NOI18N
-        jLabel2.setText(" CONFIRMAR");
+        jLabel2.setText("ACTUALIZAR");
+
+        javax.swing.GroupLayout btnActualizarInformacionLayout = new javax.swing.GroupLayout(btnActualizarInformacion);
+        btnActualizarInformacion.setLayout(btnActualizarInformacionLayout);
+        btnActualizarInformacionLayout.setHorizontalGroup(
+            btnActualizarInformacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnActualizarInformacionLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        btnActualizarInformacionLayout.setVerticalGroup(
+            btnActualizarInformacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnActualizarInformacionLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        Nombre1.setText("FECHA FUNDACION");
+
+        NumeroDocumento1.setText("LATITUD");
+
+        Edad1.setText("LONGITUD");
+
+        SalarioBase1.setText("NOMBRE DEL GERENTE");
+
+        SalarioBase2.setText("NUMERO DE DOCUMENTO");
+
+        SalarioBase4.setText("EDAD");
+
+        SalarioBase5.setText("CARRERA");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGap(0, 319, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGap(0, 0, Short.MAX_VALUE)
         );
+
+        jLabel4.setText("LOGO");
+
+        SalarioBase6.setText("PRESUPUESTO");
+
+        Edad2.setText("ESTADO");
 
         javax.swing.GroupLayout fondoAgregarMedicamentoLayout = new javax.swing.GroupLayout(fondoAgregarMedicamento);
         fondoAgregarMedicamento.setLayout(fondoAgregarMedicamentoLayout);
@@ -116,61 +184,144 @@ public class ConfirmarGerente extends javax.swing.JDialog
             fondoAgregarMedicamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(fondoTituloAgregarMedicamento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoAgregarMedicamentoLayout.createSequentialGroup()
-                .addGap(90, 90, 90)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 157, Short.MAX_VALUE)
-                .addComponent(btnVolverAddGerente)
-                .addGap(34, 34, 34))
+                .addGap(32, 32, 32)
+                .addGroup(fondoAgregarMedicamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(inputNombreHospital, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(fondoAgregarMedicamentoLayout.createSequentialGroup()
+                        .addComponent(SalarioBase1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(inputNombreGerente, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(fondoAgregarMedicamentoLayout.createSequentialGroup()
+                        .addComponent(SalarioBase2)
+                        .addGap(18, 18, 18)
+                        .addComponent(inputNumeroDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, fondoAgregarMedicamentoLayout.createSequentialGroup()
+                        .addGroup(fondoAgregarMedicamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(SalarioBase4)
+                            .addComponent(SalarioBase5))
+                        .addGap(112, 112, 112)
+                        .addGroup(fondoAgregarMedicamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(inputCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(inputEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(fondoAgregarMedicamentoLayout.createSequentialGroup()
+                        .addComponent(Edad2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(inputEstadoHospital, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(fondoAgregarMedicamentoLayout.createSequentialGroup()
+                        .addComponent(SalarioBase6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(inputPresupuesto, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, fondoAgregarMedicamentoLayout.createSequentialGroup()
+                        .addComponent(NumeroDocumento)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(inputDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(fondoAgregarMedicamentoLayout.createSequentialGroup()
+                        .addComponent(Edad)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(inputTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(fondoAgregarMedicamentoLayout.createSequentialGroup()
+                        .addComponent(Nombre1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(inputFechaFundacion, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(fondoAgregarMedicamentoLayout.createSequentialGroup()
+                        .addComponent(NumeroDocumento1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(inputLatitud, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(fondoAgregarMedicamentoLayout.createSequentialGroup()
+                        .addComponent(Edad1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(inputLongitud, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(fondoAgregarMedicamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, fondoAgregarMedicamentoLayout.createSequentialGroup()
+                        .addGap(175, 175, 175)
+                        .addComponent(btnActualizarInformacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, fondoAgregarMedicamentoLayout.createSequentialGroup()
+                        .addGap(69, 69, 69)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(fondoAgregarMedicamentoLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(145, 145, 145))
+                    .addGroup(fondoAgregarMedicamentoLayout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(btnVolverAddGerente)))
+                .addContainerGap(40, Short.MAX_VALUE))
             .addGroup(fondoAgregarMedicamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(fondoAgregarMedicamentoLayout.createSequentialGroup()
                     .addGap(32, 32, 32)
-                    .addGroup(fondoAgregarMedicamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(fondoAgregarMedicamentoLayout.createSequentialGroup()
-                            .addComponent(SalarioBase)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(inputSalarioBaseTrabajador, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(fondoAgregarMedicamentoLayout.createSequentialGroup()
-                            .addGroup(fondoAgregarMedicamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(Edad)
-                                .addComponent(NumeroDocumento)
-                                .addComponent(Nombre))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(fondoAgregarMedicamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(inputNombreGerente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(inputNumeroDocumentoTrabajador, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(inputEdadTrabajador, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGap(33, 33, 33)))
+                    .addComponent(Nombre)
+                    .addContainerGap(670, Short.MAX_VALUE)))
         );
         fondoAgregarMedicamentoLayout.setVerticalGroup(
             fondoAgregarMedicamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(fondoAgregarMedicamentoLayout.createSequentialGroup()
                 .addComponent(fondoTituloAgregarMedicamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 196, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(inputNombreHospital, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(fondoAgregarMedicamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoAgregarMedicamentoLayout.createSequentialGroup()
+                    .addGroup(fondoAgregarMedicamentoLayout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(46, 46, 46)
+                        .addComponent(btnActualizarInformacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnVolverAddGerente)
-                        .addGap(19, 19, 19)))
-                .addGap(27, 27, 27))
+                        .addGap(46, 46, 46))
+                    .addGroup(fondoAgregarMedicamentoLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(fondoAgregarMedicamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(fondoAgregarMedicamentoLayout.createSequentialGroup()
+                                .addGroup(fondoAgregarMedicamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(inputDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(NumeroDocumento))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(fondoAgregarMedicamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(inputTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(Edad))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(fondoAgregarMedicamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(inputPresupuesto, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(SalarioBase6))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(fondoAgregarMedicamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(inputFechaFundacion, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(Nombre1))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(fondoAgregarMedicamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(inputEstadoHospital, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(Edad2))
+                                .addGap(10, 10, 10)
+                                .addGroup(fondoAgregarMedicamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(inputLatitud, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(NumeroDocumento1))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(fondoAgregarMedicamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(inputLongitud, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(Edad1))
+                                .addGap(41, 41, 41))
+                            .addGroup(fondoAgregarMedicamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(inputNombreGerente, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(SalarioBase1)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(fondoAgregarMedicamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(inputNumeroDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(SalarioBase2))
+                        .addGap(10, 10, 10)
+                        .addGroup(fondoAgregarMedicamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(inputEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(SalarioBase4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(fondoAgregarMedicamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(inputCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(SalarioBase5))
+                        .addContainerGap(28, Short.MAX_VALUE))))
             .addGroup(fondoAgregarMedicamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(fondoAgregarMedicamentoLayout.createSequentialGroup()
-                    .addGap(73, 73, 73)
-                    .addGroup(fondoAgregarMedicamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(inputNombreGerente, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(Nombre))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(fondoAgregarMedicamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(inputNumeroDocumentoTrabajador, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(NumeroDocumento))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(fondoAgregarMedicamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(inputEdadTrabajador, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(Edad))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(fondoAgregarMedicamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(inputSalarioBaseTrabajador, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(SalarioBase))
-                    .addContainerGap(73, Short.MAX_VALUE)))
+                    .addGap(82, 82, 82)
+                    .addComponent(Nombre)
+                    .addContainerGap(488, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -192,23 +343,95 @@ public class ConfirmarGerente extends javax.swing.JDialog
     }//GEN-LAST:event_btnVolverAddGerenteMouseClicked
 
     private void btnVolverAddGerenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverAddGerenteActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_btnVolverAddGerenteActionPerformed
 
+    private void btnActualizarInformacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarInformacionMouseClicked
+
+        // TODO add your handling code here:
+       
+        ArrayList<String> lineasActualizadas = new ArrayList();
+        String nombre= "Nombre:";
+        lineasActualizadas.add(nombre + inputNombreHospital.getText());
+        String dir= "Direccion:";
+        lineasActualizadas.add(dir + inputDireccion.getText());
+        String tel= "Telefono:";
+        lineasActualizadas.add(tel + inputTelefono.getText());
+        String fecha = "Fecha de fundacion:";
+        lineasActualizadas.add(fecha + inputFechaFundacion.getText());
+        String pre= "Presupuesto:";
+        lineasActualizadas.add(pre + inputPresupuesto.getText());
+        String estado= "Estado:";
+        lineasActualizadas.add(estado + inputEstadoHospital.getText());
+        String la= "Latitud:";
+        lineasActualizadas.add(la + inputLatitud.getText());
+        String lo = "Longitud:";
+        lineasActualizadas.add(lo + inputLongitud.getText());
+        String nombreGerente="Nombre gerente:";
+        lineasActualizadas.add(nombreGerente + inputNombreGerente.getText());
+        String docu="Numero de documento gerente:";
+        lineasActualizadas.add(docu + inputNumeroDocumento.getText());
+        String edad = "Edad gerente:";
+        lineasActualizadas.add(edad + inputEdad.getText());
+        String carrera="Carrera gerente:";
+        lineasActualizadas.add(carrera + inputCarrera.getText());
+        this.hospital.actualizarHospitalArchivo(lineasActualizadas);
+        JOptionPane.showMessageDialog(this, "La información se ha actualizado con exito");
+        
+        
+        
+    }//GEN-LAST:event_btnActualizarInformacionMouseClicked
+
+    private void cargarInformacionHospital(Hospital hospital)
+    {
+        inputNombreHospital.setText(hospital.getNombre());
+        inputDireccion.setText(hospital.getDireccion());
+        inputTelefono.setText(hospital.getTelefono());
+        inputFechaFundacion.setText(hospital.getFechaFundacion().toString());
+        inputPresupuesto.setText(hospital.getPresupuesto().toString());
+        inputEstadoHospital.setText(hospital.getEstado());
+        inputLatitud.setText(String.valueOf(hospital.getLocalizacion().getLatitud()));
+        inputLongitud.setText(String.valueOf(hospital.getLocalizacion().getLongitud()));
+        inputNombreGerente.setText(hospital.getGerente().getNombreGerente());
+        inputNumeroDocumento.setText(hospital.getGerente().getNumeroIdentificacion());
+        inputEdad.setText(hospital.getGerente().getEdad().toString());
+        inputCarrera.setText(hospital.getGerente().getCarrera());
+        
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Edad;
+    private javax.swing.JLabel Edad1;
+    private javax.swing.JLabel Edad2;
     private javax.swing.JLabel Nombre;
+    private javax.swing.JLabel Nombre1;
     private javax.swing.JLabel NumeroDocumento;
-    private javax.swing.JLabel SalarioBase;
+    private javax.swing.JLabel NumeroDocumento1;
+    private javax.swing.JLabel SalarioBase1;
+    private javax.swing.JLabel SalarioBase2;
+    private javax.swing.JLabel SalarioBase3;
+    private javax.swing.JLabel SalarioBase4;
+    private javax.swing.JLabel SalarioBase5;
+    private javax.swing.JLabel SalarioBase6;
+    private javax.swing.JPanel btnActualizarInformacion;
     private javax.swing.JButton btnVolverAddGerente;
     private javax.swing.JPanel fondoAgregarMedicamento;
     private javax.swing.JPanel fondoTituloAgregarMedicamento;
-    private javax.swing.JTextField inputEdadTrabajador;
+    private javax.swing.JTextField inputCarrera;
+    private javax.swing.JTextField inputDireccion;
+    private javax.swing.JTextField inputEdad;
+    private javax.swing.JTextField inputEstadoHospital;
+    private javax.swing.JTextField inputFechaFundacion;
+    private javax.swing.JTextField inputLatitud;
+    private javax.swing.JTextField inputLongitud;
     private javax.swing.JTextField inputNombreGerente;
-    private javax.swing.JTextField inputNumeroDocumentoTrabajador;
-    private javax.swing.JTextField inputSalarioBaseTrabajador;
+    private javax.swing.JTextField inputNombreHospital;
+    private javax.swing.JTextField inputNumeroDocumento;
+    private javax.swing.JTextField inputPresupuesto;
+    private javax.swing.JTextField inputSalarioBaseTrabajador3;
+    private javax.swing.JTextField inputTelefono;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

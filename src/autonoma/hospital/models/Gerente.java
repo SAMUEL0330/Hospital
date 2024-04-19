@@ -40,7 +40,9 @@ public class Gerente
         this.edad = edad;
         this.carrera = carrera;
     }
-   
+
+    public Gerente() {}
+    
     //////////////Metodos De Acceso///////////////////////////////////////
     public String getNombreGerente()
     {

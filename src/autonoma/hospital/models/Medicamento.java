@@ -78,11 +78,13 @@ public abstract class Medicamento
         this.costo = costo;
     }
 
-    public Double getPrecioVenta() {
+    public Double getPrecioVenta()
+    {
         return precioVenta;
     }
 
-    public void setPrecioVenta(Double precioVenta) {
+    public void setPrecioVenta(Double precioVenta)
+    {
         this.precioVenta = precioVenta;
     }
 
@@ -105,13 +107,15 @@ public abstract class Medicamento
                 {
                     Medicamento medicamento = new MedicamentoGenerico(partes[0],partes[1] ,Integer.parseInt(partes[2]), costoTotal);
                     medicamentos.add(medicamento);
-                    if(partes.length ==4){
+                    if(partes.length ==4)
+                    {
                         linea += ";" + medicamento.getPrecioVenta();
                     }
                 }else{
                     Medicamento medicamento = new MedicamentoMarca(partes[0], partes[1] ,Integer.parseInt(partes[2]), costoTotal, partes[4]);
                     medicamentos.add(medicamento);
-                    if(partes.length ==5){
+                    if(partes.length ==5)
+                    {
                         linea += ";" + medicamento.getPrecioVenta();
                     }
                 }
@@ -123,7 +127,8 @@ public abstract class Medicamento
         } finally {
             try 
             {
-                if (scanner != null){
+                if (scanner != null)
+                {
                     scanner.close();
                 }
                 actualizarCostoMedicamentoArchivo(lineasActualizadas, "C:\\Users\\User\\OneDrive\\Documentos\\NetBeansProjects\\Hospital\\src\\autonoma\\hospital\\files\\Medicamentos.txt");

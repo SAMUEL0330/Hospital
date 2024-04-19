@@ -55,19 +55,19 @@
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Group type="102" attributes="0">
                                   <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
-                                  <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnAgregarPaciente" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Component id="btnVolverAddPaciente" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
                                   <Component id="SalarioBase" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="inputSalarioBaseTrabajador" min="-2" pref="280" max="-2" attributes="0"/>
+                                  <Component id="inputEdadPaciente" min="-2" pref="280" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
                                   <Component id="SalarioBase1" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace pref="97" max="32767" attributes="0"/>
-                                  <Component id="inputSalarioBaseTrabajador1" min="-2" pref="280" max="-2" attributes="0"/>
+                                  <Component id="inputCorreoPaciente" min="-2" pref="280" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
@@ -83,9 +83,9 @@
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="inputNombreTrabajador" alignment="1" min="-2" pref="280" max="-2" attributes="0"/>
-                          <Component id="inputNumeroDocumentoTrabajador" alignment="1" min="-2" pref="280" max="-2" attributes="0"/>
-                          <Component id="inputEdadTrabajador" alignment="1" min="-2" pref="280" max="-2" attributes="0"/>
+                          <Component id="inputNombrePaciente" alignment="1" min="-2" pref="280" max="-2" attributes="0"/>
+                          <Component id="inputNumeroDocumentoPaciente" alignment="1" min="-2" pref="280" max="-2" attributes="0"/>
+                          <Component id="inputTelefonoPaciente" alignment="1" min="-2" pref="280" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                   </Group>
@@ -100,13 +100,13 @@
                   <Component id="Edad" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="inputSalarioBaseTrabajador" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                      <Component id="inputEdadPaciente" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                       <Component id="SalarioBase" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="SalarioBase1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="inputSalarioBaseTrabajador1" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                      <Component id="inputCorreoPaciente" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                   </Group>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
@@ -115,7 +115,7 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnAgregarPaciente" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace pref="15" max="32767" attributes="0"/>
@@ -124,16 +124,16 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="inputNombreTrabajador" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                          <Component id="inputNombrePaciente" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                           <Component id="Nombre" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="inputNumeroDocumentoTrabajador" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                          <Component id="inputNumeroDocumentoPaciente" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                           <Component id="NumeroDocumento" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="inputEdadTrabajador" min="-2" pref="34" max="-2" attributes="0"/>
+                      <Component id="inputTelefonoPaciente" min="-2" pref="34" max="-2" attributes="0"/>
                       <EmptySpace pref="113" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -200,13 +200,13 @@
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnVolverAddPacienteMouseClicked"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="inputNumeroDocumentoTrabajador">
+        <Component class="javax.swing.JTextField" name="inputNumeroDocumentoPaciente">
         </Component>
-        <Component class="javax.swing.JTextField" name="inputNombreTrabajador">
+        <Component class="javax.swing.JTextField" name="inputNombrePaciente">
         </Component>
-        <Component class="javax.swing.JTextField" name="inputSalarioBaseTrabajador">
+        <Component class="javax.swing.JTextField" name="inputEdadPaciente">
         </Component>
-        <Component class="javax.swing.JTextField" name="inputEdadTrabajador">
+        <Component class="javax.swing.JTextField" name="inputTelefonoPaciente">
         </Component>
         <Component class="javax.swing.JLabel" name="Nombre">
           <Properties>
@@ -233,9 +233,12 @@
             <Property name="text" type="java.lang.String" value="CORREO"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="inputSalarioBaseTrabajador1">
+        <Component class="javax.swing.JTextField" name="inputCorreoPaciente">
         </Component>
-        <Container class="javax.swing.JPanel" name="jPanel1">
+        <Container class="javax.swing.JPanel" name="btnAgregarPaciente">
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnAgregarPacienteMouseClicked"/>
+          </Events>
 
           <Layout>
             <DimensionLayout dim="0">
@@ -266,7 +269,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/autonoma/hospital/images/Paciente50.png"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="CONFIRMAR"/>
+                <Property name="text" type="java.lang.String" value="GUARDAR"/>
               </Properties>
             </Component>
           </SubComponents>

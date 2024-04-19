@@ -33,10 +33,11 @@ public class GestionInventario extends javax.swing.JDialog
         fondoTituloFarmacia = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         tablaMedicamentos = new javax.swing.JTable();
-        btnAgregarMedicamento = new javax.swing.JButton();
-        btnActualizarMedicamento = new javax.swing.JButton();
-        btnEliminarMedicamento = new javax.swing.JButton();
         btnVolverFarmacia = new javax.swing.JButton();
+        btnActualizarMedicamento = new javax.swing.JButton();
+        btnAgregarMedicamentoMarca = new javax.swing.JButton();
+        btnAgregarMedicamentoGenerico = new javax.swing.JButton();
+        btnEliminarMedicamento = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -52,16 +53,16 @@ public class GestionInventario extends javax.swing.JDialog
         fondoTituloFarmaciaLayout.setHorizontalGroup(
             fondoTituloFarmaciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(fondoTituloFarmaciaLayout.createSequentialGroup()
-                .addGap(152, 152, 152)
+                .addGap(147, 147, 147)
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         fondoTituloFarmaciaLayout.setVerticalGroup(
             fondoTituloFarmaciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(fondoTituloFarmaciaLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
+                .addGap(15, 15, 15)
                 .addComponent(jLabel1)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         tablaMedicamentos.setModel(new javax.swing.table.DefaultTableModel(
@@ -92,12 +93,6 @@ public class GestionInventario extends javax.swing.JDialog
         });
         tablaMedicamentos.getTableHeader().setReorderingAllowed(false);
 
-        btnAgregarMedicamento.setText("Agregar");
-
-        btnActualizarMedicamento.setText("Actualizar");
-
-        btnEliminarMedicamento.setText("Eliminar");
-
         btnVolverFarmacia.setBackground(new java.awt.Color(255, 0, 0));
         btnVolverFarmacia.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnVolverFarmacia.setText("<- VOLVER ");
@@ -113,6 +108,43 @@ public class GestionInventario extends javax.swing.JDialog
             }
         });
 
+        btnActualizarMedicamento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/autonoma/hospital/images/editar16.png"))); // NOI18N
+        btnActualizarMedicamento.setText("Actualizar");
+        btnActualizarMedicamento.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnActualizarMedicamentoMouseClicked(evt);
+            }
+        });
+
+        btnAgregarMedicamentoMarca.setIcon(new javax.swing.ImageIcon(getClass().getResource("/autonoma/hospital/images/MedicamentoMarca16.png"))); // NOI18N
+        btnAgregarMedicamentoMarca.setText("Agregar");
+        btnAgregarMedicamentoMarca.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAgregarMedicamentoMarcaMouseClicked(evt);
+            }
+        });
+        btnAgregarMedicamentoMarca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarMedicamentoMarcaActionPerformed(evt);
+            }
+        });
+
+        btnAgregarMedicamentoGenerico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/autonoma/hospital/images/MedicamentoGenerico16.png"))); // NOI18N
+        btnAgregarMedicamentoGenerico.setText("Agregar");
+        btnAgregarMedicamentoGenerico.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAgregarMedicamentoGenericoMouseClicked(evt);
+            }
+        });
+
+        btnEliminarMedicamento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/autonoma/hospital/images/Cancel.png"))); // NOI18N
+        btnEliminarMedicamento.setText("Eliminar");
+        btnEliminarMedicamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarMedicamentoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout fondoFarmaciaLayout = new javax.swing.GroupLayout(fondoFarmacia);
         fondoFarmacia.setLayout(fondoFarmaciaLayout);
         fondoFarmaciaLayout.setHorizontalGroup(
@@ -120,34 +152,42 @@ public class GestionInventario extends javax.swing.JDialog
             .addComponent(fondoTituloFarmacia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(fondoFarmaciaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(fondoFarmaciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(fondoFarmaciaLayout.createSequentialGroup()
-                        .addComponent(tablaMedicamentos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(fondoFarmaciaLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(btnAgregarMedicamento)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnActualizarMedicamento)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnEliminarMedicamento)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
-                        .addComponent(btnVolverFarmacia)
-                        .addGap(14, 14, 14))))
+                .addComponent(tablaMedicamentos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(fondoFarmaciaLayout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addGroup(fondoFarmaciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(btnAgregarMedicamentoMarca, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnActualizarMedicamento))
+                .addGap(18, 18, 18)
+                .addGroup(fondoFarmaciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnEliminarMedicamento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnAgregarMedicamentoGenerico))
+                .addGap(56, 56, 56)
+                .addComponent(btnVolverFarmacia)
+                .addContainerGap(813, Short.MAX_VALUE))
         );
         fondoFarmaciaLayout.setVerticalGroup(
             fondoFarmaciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(fondoFarmaciaLayout.createSequentialGroup()
-                .addComponent(fondoTituloFarmacia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tablaMedicamentos, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(fondoFarmaciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(fondoFarmaciaLayout.createSequentialGroup()
+                        .addComponent(fondoTituloFarmacia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tablaMedicamentos, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                        .addGroup(fondoFarmaciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnAgregarMedicamentoGenerico)
+                            .addComponent(btnAgregarMedicamentoMarca))
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoFarmaciaLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnVolverFarmacia)
+                        .addGap(2, 2, 2)))
                 .addGroup(fondoFarmaciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAgregarMedicamento)
-                    .addComponent(btnActualizarMedicamento)
                     .addComponent(btnEliminarMedicamento)
-                    .addComponent(btnVolverFarmacia))
-                .addGap(0, 14, Short.MAX_VALUE))
+                    .addComponent(btnActualizarMedicamento))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -172,9 +212,49 @@ public class GestionInventario extends javax.swing.JDialog
         this.dispose();
     }//GEN-LAST:event_btnVolverFarmaciaMouseClicked
 
+    private void btnAgregarMedicamentoMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarMedicamentoMarcaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAgregarMedicamentoMarcaActionPerformed
+
+    private void btnEliminarMedicamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarMedicamentoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEliminarMedicamentoActionPerformed
+
+    private void btnAgregarMedicamentoMarcaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMedicamentoMarcaMouseClicked
+        AgregarMedicamentoMarca vAgregarMedicamentoMarca = new AgregarMedicamentoMarca(ventanaPricipal, rootPaneCheckingEnabled);
+        vAgregarMedicamentoMarca.setVisible(true);
+    }//GEN-LAST:event_btnAgregarMedicamentoMarcaMouseClicked
+
+    private void btnAgregarMedicamentoGenericoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMedicamentoGenericoMouseClicked
+        AgregarMedicamentoGenerico vAgregarMedicamentoGenerico = new AgregarMedicamentoGenerico(ventanaPricipal, rootPaneCheckingEnabled);
+        vAgregarMedicamentoGenerico.setVisible(true);
+    }//GEN-LAST:event_btnAgregarMedicamentoGenericoMouseClicked
+
+    private void btnActualizarMedicamentoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarMedicamentoMouseClicked
+        int filaSeleccionada = tablaMedicamentos.getSelectedRow();
+    
+        if (filaSeleccionada != -1)
+        {
+            String tipoTrabajador = (String) tablaMedicamentos.getValueAt(filaSeleccionada, 2);
+            if ("Generico".equals(tipoTrabajador))
+            {
+                ActualizarMedicamentoGenerico vActualizarMedicamentoGenerico = new ActualizarMedicamentoGenerico(ventanaPricipal, rootPaneCheckingEnabled);
+                vActualizarMedicamentoGenerico.setVisible(true);
+            } else if ("Marca".equals(tipoTrabajador)){
+                ActualizarMedicamentoMarca vActualizarMedicamentoMarca = new ActualizarMedicamentoMarca(ventanaPricipal, rootPaneCheckingEnabled);
+                vActualizarMedicamentoMarca.setVisible(true);
+            } else {
+                System.out.println("Tipo de trabajador desconocido: " + tipoTrabajador);
+            }
+        } else {
+            System.out.println("No se ha seleccionado ningún trabajador.");
+        }
+    }//GEN-LAST:event_btnActualizarMedicamentoMouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizarMedicamento;
-    private javax.swing.JButton btnAgregarMedicamento;
+    private javax.swing.JButton btnAgregarMedicamentoGenerico;
+    private javax.swing.JButton btnAgregarMedicamentoMarca;
     private javax.swing.JButton btnEliminarMedicamento;
     private javax.swing.JButton btnVolverFarmacia;
     private javax.swing.JPanel fondoFarmacia;
